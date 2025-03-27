@@ -2,6 +2,10 @@ import React from 'react'
 
 export default function Login() {
   return (
-    <div>Login</div>
+    <>
+       
+        <div className='color-success'>Login</div>
+
+    </>
   )
 }

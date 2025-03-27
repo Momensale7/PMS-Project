@@ -1,0 +1,32 @@
+.auth-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #0E382F;
+}
+
+.vector-rightImg {
+    clip-path: path("M477.848 121.889C491.698 34.5427 462.207 -30.3149 444.936 -59.6475H3.38267C0.830028 -14.2906 -2.74367 92.23 3.38267 155.458C11.0406 234.493 80.2878 249.159 110.919 258.937C141.551 268.714 214.872 290.714 198.253 426.784C181.633 562.855 245.341 609.135 370.312 626.571C495.282 644.008 480.455 693.547 468.724 820.655C459.339 922.341 513.585 998.498 541.882 1023.86H1097V812.018C919.727 834.507 878.179 791.323 832.394 693.547C786.609 595.772 906.693 468.664 878.179 419.451C849.665 370.237 752.719 382.133 681.028 329.498C609.337 276.862 667.179 223.086 637.85 191.961C608.522 160.836 463.999 209.234 477.848 121.889Z");   
+    width: 30%;
+    height: 100%;
+    background-image : url('./assets/images/leftimg1.jpg');
+    background-size:cover;
+    background-position-x:center;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0;
+}
+
+.vector-leftImg {
+
+    background-color: rgba(255, 166, 0, 0.281);
+    clip-path: path("M285.717 427.043C436.801 467.37 407.085 632.897 416 659H-0.653824C-31.1 437.62 -73.7246 -4.07649 -0.653824 0.175003C90.6847 5.48937 139.013 88.3309 135.416 145.851C131.818 203.371 134.634 386.717 285.717 427.043Z");
+    background-image : url('./assets/images/rightImg1.jpg');
+    width: 457px;
+    height: 658.86px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+}
