@@ -41,20 +41,20 @@ export default function Login({ saveLoginData }: Props) {
 
   return (
       <>
-        <div className="w-50 p-5" id={styles.loginForm}>
+        <div className="mt-5 p-5 position-relative text-start rounded-3" id={styles.loginForm}>
           <div className="title my-3">
             <p>welcome to PMS</p>
-            <h3 className="h5">Login</h3>
+            <h1 className="text-warning">Login</h1>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mt-3 mb-2">
-              <Form.Label htmlFor="inputPassword5">Email</Form.Label>
+              <Form.Label htmlFor="inputPassword5" className="text-warning">Email</Form.Label>
               <input {...register("email", EMAIL_VALIDATION)} autoComplete="current-password" type="text" className="form-control"
                      placeholder="Enter your E-mail" aria-label="Username" aria-describedby="basic-addon1" />
             </div>
             {errors.email && <span className="text-danger">{errors.email.message}</span>}
             <div className="mt-3 mb-2">
-              <Form.Label htmlFor="inputPassword5">Password</Form.Label>
+              <Form.Label htmlFor="inputPassword5" className="text-warning" vali>Password</Form.Label>
               <div className="position-relative">
                 <input
                     {...register("password", PASSWORD_VALIDATION)}
@@ -79,7 +79,7 @@ export default function Login({ saveLoginData }: Props) {
               <Link to="/forget-password" className="text-white text-decoration-none">Forget Password ?</Link>
             </div>
             {/*#EF9B28*/}
-            <button type="submit" className="btn w-100 btn-warning">Submit</button>
+            <button type="submit" className="rounded-5 btn w-100 btn-warning">Submit</button>
           </form>
         </div>
 
