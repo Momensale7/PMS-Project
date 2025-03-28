@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css'
-import Button from "react-bootstrap/Button";
 import AuthLayout from './modules/shared/AuthLayout/AuthLayout';
 import NotFound from './modules/shared/NotFound/NotFound';
 import Login from './modules/Authentication/Login/Login';
@@ -12,7 +11,6 @@ import MasterLayout from './modules/shared/MasterLayout/MasterLayout';
 import Dashboard from './modules/Dashboard/Dashboard';
 import {jwtDecode} from "jwt-decode";
 import {useEffect, useState} from "react";
-import {ToastContainer} from "react-toastify";
 import {DecodedToken, UserData} from "./modules/Interfaces/User.ts";
 import { Bounce, ToastContainer } from 'react-toastify';
 function App() {
@@ -81,7 +79,6 @@ theme="light"
 transition={Bounce}
 />
           <RouterProvider router={routes}></RouterProvider>
-          <ToastContainer />
 
       {/* <Button variant="primary">test</Button> */}
     </>
