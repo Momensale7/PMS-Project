@@ -9,6 +9,7 @@ import {
   PASSWORD_VALIDATION,
   OTP_VALIDATION,
 } from "../../services/validation/validation";
+import { toast } from "react-toastify";
 
 interface FormData {
   email: string;
@@ -40,10 +41,10 @@ export default function ResetPass() {
         USER_URLS.RESET_PASS,
         data
       );
-      console.log(response.data);
+      toast.success(response.data.message);
       navigate("/");
     } catch (error: any) {
-      console.log(
+      toast.error(
         error.response?.data?.message || error.message || "An error occurred"
       );
     } finally {
@@ -104,7 +105,7 @@ export default function ResetPass() {
                 type="button"
                 className="btn position-absolute end-0 top-50 translate-middle-y"
                 onClick={() => setShowPassword(!showPassword)}
-                style={{ background: "none", border: "none", color: "white" }}
+                style={{ background: "none", border: "none", color: "black" }}
               >
                 {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
               </button>
@@ -136,7 +137,7 @@ export default function ResetPass() {
                 type="button"
                 className="btn position-absolute end-0 top-50 translate-middle-y"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                style={{ background: "none", border: "none", color: "white" }}
+                style={{ background: "none", border: "none", color: "black" }}
               >
                 {showConfirmPassword ? (
                   <FaEyeSlash size={18} />

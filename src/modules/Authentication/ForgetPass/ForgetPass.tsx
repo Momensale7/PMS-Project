@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { USER_URLS } from "../../services/api/apiConfig";
 import { puplicAxiosInstance } from "../../services/api/apiInstance";
+import { toast } from "react-toastify";
 
 interface FormData {
   email: string;
@@ -26,10 +27,10 @@ export default function ForgetPass() {
         USER_URLS.FORGET_PASS,
         data
       );
-      console.log(response.data);
+      toast.success(response.data.message);
       navigate("/reset-password");
     } catch (error: any) {
-      console.log(
+      toast.error(
         error.response?.data?.message || error.message || "An error occurred"
       );
     } finally {
@@ -86,6 +87,7 @@ export default function ForgetPass() {
           </button>
         </form>
       </div>
+      
     </div>
   );
 }
