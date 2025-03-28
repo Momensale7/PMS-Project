@@ -7,22 +7,14 @@ import { COUNTRY_VALIDATION, EMAIL_VALIDATION, PASSWORD_VALIDATION, PHONE_VALIDA
 import regisertAvatar from '../../../assets/images/registerAvatar.png';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { RegisterFormInputs } from '../../interfaces/AuthInterfaces';
+import useTogglePassword from '../../hooks/useTogglePassword';
 
-interface RegisterFormInputs {
-  userName: string;
-  email: string;
-  country: string;
-  phoneNumber: string;
-  password: string;
-  confirmPassword: string;
-  profileImage?: FileList;
-}
 
 export default function Register(): JSX.Element {
-  const [showPass, setShowPass] = useState<boolean>(false);
-  const [showConfirmPass, setConfirmPass] = useState<boolean>(false);
   const [imagePreview, setImagePreview] = useState<string>(regisertAvatar);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const {showPass,showConfirmPass,handleShowPass,handleConfirmPass}=useTogglePassword()
   const navigate = useNavigate();
 
   const {
@@ -42,8 +34,7 @@ export default function Register(): JSX.Element {
     }
   }, [password, confirmPassword, trigger]);
 
-  const handleShowPass = (): void => setShowPass((prev) => !prev);
-  const handleConfirmPass = (): void => setConfirmPass((prev) => !prev);
+ 
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files?.[0];
@@ -85,7 +76,7 @@ export default function Register(): JSX.Element {
 
   return (
     <>
-    <div className='lh-1 form'>
+    <div className='lh-1 form '>
       <p className='text-white m-0 p-0 fs-6'>Welcome to pms</p>
       <h3 className="h5 form-heading m-0 p-0"><span className='text-decoration-underline'>C</span>reate New Account</h3>
     </div>

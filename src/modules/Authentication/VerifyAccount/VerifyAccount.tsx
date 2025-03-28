@@ -6,14 +6,8 @@ import { USER_URLS } from '../../services/api/apiConfig';
 import { EMAIL_VALIDATION } from '../../services/validation/validation';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { LocationState, VerifyFormInputs } from '../../interfaces/AuthInterfaces';
 
-interface VerifyFormInputs {
-  email: string;
-  code: string;
-}
-interface LocationState {
-  email?: string;
-}
 
 export default function VerifyAccount():JSX.Element {
   const { state } = useLocation() as { state: LocationState };
