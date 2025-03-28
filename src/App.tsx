@@ -14,6 +14,7 @@ import {jwtDecode} from "jwt-decode";
 import {useEffect, useState} from "react";
 import {ToastContainer} from "react-toastify";
 import {DecodedToken, UserData} from "./modules/Interfaces/User.ts";
+import { Bounce, ToastContainer } from 'react-toastify';
 function App() {
 
 
@@ -66,10 +67,23 @@ function App() {
 
   return (
     <>
+    <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+transition={Bounce}
+/>
           <RouterProvider router={routes}></RouterProvider>
           <ToastContainer />
 
-      <Button variant="primary">test</Button>
+      {/* <Button variant="primary">test</Button> */}
     </>
   )
 }
