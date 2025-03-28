@@ -13,24 +13,10 @@ import Dashboard from './modules/Dashboard/Dashboard';
 import {jwtDecode} from "jwt-decode";
 import {useEffect, useState} from "react";
 import {ToastContainer} from "react-toastify";
+import {DecodedToken, UserData} from "./modules/Interfaces/User.ts";
 function App() {
 
-    interface DecodedToken {
-        user?: {
-            id: string;
-            name: string;
-            email: string;
-        };
-        iat?: number;
-        exp?: number;
-    }
 
-    interface UserData {
-        id: string;
-        name: string;
-        email: string;
-        // Add other user properties as needed
-    }
 
     const [, setLoginData] = useState<UserData | null>(null)
 

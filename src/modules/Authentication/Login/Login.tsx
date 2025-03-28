@@ -7,27 +7,8 @@ import { EMAIL_VALIDATION, PASSWORD_VALIDATION } from "../../services/validation
 import { USER_URLS } from "../../services/api/apiConfig.ts";
 import {puplicAxiosInstance} from "../../services/api/apiInstance.ts";
 import {AxiosError} from "axios";
-import './Login.css';
-
-interface LoginFormData {
-  email: string;
-  password: string;
-}
-
-interface UserData {
-  id: string;
-  name: string;
-  email: string;
-}
-
-interface LoginResponse {
-  token: string;
-  user: UserData;
-}
-
-interface Props {
-  saveLoginData: (userData: UserData) => void;
-}
+import styles from './login.module.css';
+import {LoginFormData, LoginResponse, Props} from "../../Interfaces/User.ts";
 
 export default function Login({ saveLoginData }: Props) {
   const {
@@ -60,7 +41,7 @@ export default function Login({ saveLoginData }: Props) {
 
   return (
       <>
-        <div className="w-50 text-white p-5" id="login-form">
+        <div className="w-50 p-5" id={styles.loginForm}>
           <div className="title my-3">
             <p>welcome to PMS</p>
             <h3 className="h5">Login</h3>
