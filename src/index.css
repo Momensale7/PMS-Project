@@ -1,0 +1,18 @@
+
+
+:root{
+    --color-primary: #EF9B28;
+}
+
+
+
+::placeholder {
+    color: white !important;
+    opacity: 1;
+}
+
+.form-control:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}

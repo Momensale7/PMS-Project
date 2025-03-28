@@ -10,6 +10,7 @@ import VerifyAccount from './modules/Authentication/VerifyAccount/VerifyAccount'
 import Register from './modules/Authentication/Register/Register';
 import MasterLayout from './modules/shared/MasterLayout/MasterLayout';
 import Dashboard from './modules/Dashboard/Dashboard';
+
 function App() {
   const routes = createBrowserRouter(
     [
@@ -37,12 +38,9 @@ function App() {
     ]);
 
   return (
-    <>
-          <RouterProvider router={routes}></RouterProvider>
+  <RouterProvider router={routes} />
+  );
 
-      <Button variant="primary">test</Button>
-    </>
-  )
 }
 
 export default App
