@@ -1,3 +1,101 @@
+:root{
+    --main-color:#EF9B28;
+}
+.form{
+    text-align: left;
+}
+.form  .form-control {
+    background-color: transparent !important;
+    border:none;
+    border-bottom: 0.3px solid #fff;
+    border-radius: 0;
+    color: #fff;
+}
+
+.form  .form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-bottom: 0.3px solid var(--main-color);
+}
+
+.form .form-control::placeholder {
+    color: #fff;
+}
+
+.form .form-label {
+    color: var(--main-color);
+}
+
+.form-heading{
+    color: var(--main-color);
+}
+
+.btn-eye{
+    top: 30px;
+    right: 10px;
+    color: #fff;
+}
+.btn-eye:focus{
+    box-shadow: none ;
+    outline: none;
+    border: none;
+    color: #fff;
+
+}
+.btn-eye:hover{
+    color: #fff;
+
+}
+
+.form .form-error{
+    color: rgb(236, 26, 26) !important;
+}
+ .btn-submit{
+    background-color: var(--main-color);
+    color: #fff;
+    border: 1px solid var(--main-color);
+    border-radius: 96px;
+    padding: 5px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.btn-submit:hover{
+border: 1px solid var(--main-color) !important;
+color: var(--main-color) ;
+
+}
+.form{
+    background-color:none ;
+}
+
+.btn-upload{
+    --bs-btn-padding-x: 0;
+    --bs-btn-padding-y: 0;
+    width: 80px;
+    height: 80px;
+    color: #fff;
+    border: none;
+    border-radius: 96px;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #314a59ce;
+}
+
+.img-full{
+    max-width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
 .auth-container {
     width: 100%;
     height: 100vh;

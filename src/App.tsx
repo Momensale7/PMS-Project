@@ -10,6 +10,7 @@ import VerifyAccount from './modules/Authentication/VerifyAccount/VerifyAccount'
 import Register from './modules/Authentication/Register/Register';
 import MasterLayout from './modules/shared/MasterLayout/MasterLayout';
 import Dashboard from './modules/Dashboard/Dashboard';
+import { Bounce, ToastContainer } from 'react-toastify';
 function App() {
   const routes = createBrowserRouter(
     [
@@ -38,6 +39,19 @@ function App() {
 
   return (
     <>
+    <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+transition={Bounce}
+/>
           <RouterProvider router={routes}></RouterProvider>
 
       {/* <Button variant="primary">test</Button> */}
