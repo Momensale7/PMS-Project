@@ -10,8 +10,36 @@ import VerifyAccount from './modules/Authentication/VerifyAccount/VerifyAccount'
 import Register from './modules/Authentication/Register/Register';
 import MasterLayout from './modules/shared/MasterLayout/MasterLayout';
 import Dashboard from './modules/Dashboard/Dashboard';
+import {jwtDecode} from "jwt-decode";
+import {useEffect, useState} from "react";
+import {ToastContainer} from "react-toastify";
+import {DecodedToken, UserData} from "./modules/Interfaces/User.ts";
 import { Bounce, ToastContainer } from 'react-toastify';
 function App() {
+
+
+
+    const [, setLoginData] = useState<UserData | null>(null)
+
+    const saveLoginData = (userData: UserData) => {
+        setLoginData(userData);
+    };
+
+    useEffect(() => {
+        const token: string | null = localStorage.getItem('token');
+        if (token) {
+            try {
+                const decodedData = jwtDecode<DecodedToken>(token);
+                if (decodedData.user) {
+                    setLoginData(decodedData.user);
+                }
+            } catch (error) {
+                console.error("Invalid token", error);
+                localStorage.removeItem('token');
+            }
+        }
+    }, [])
+
   const routes = createBrowserRouter(
     [
       {
@@ -19,8 +47,8 @@ function App() {
         element:<AuthLayout/>,
         errorElement:<NotFound/>,
         children:[
-          {index:true,element:<Login/>},
-          {path:"login",element:<Login/>},
+          {index:true,element:<Login saveLoginData={saveLoginData}/>},
+          {path:"login",element:<Login saveLoginData={saveLoginData}/>},
           { path: "register", element: <Register /> },
           { path: "forget-password", element: <ForgetPass /> },
           { path: "reset-password", element: <ResetPass /> },
@@ -53,6 +81,7 @@ theme="light"
 transition={Bounce}
 />
           <RouterProvider router={routes}></RouterProvider>
+          <ToastContainer />
 
       {/* <Button variant="primary">test</Button> */}
     </>
