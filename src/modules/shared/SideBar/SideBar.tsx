@@ -14,6 +14,7 @@ export default function SideBar({ collapsed, setCollapsed }: SideBarProps) {
 
   const menuItems:menuItems[] = [
     { to: "/dashboard", icon: "fa-home", label: "Home" },
+    { to: "users", icon: "fa-users", label: "Users" },
     { to: "projects", icon: "fa-folder", label: "Projects" },
     { to: "tasks", icon: "fa-tasks", label: "Tasks" },
   ];
