@@ -6,7 +6,7 @@ import profileImage from '../../../assets/images/registerAvatar.png'
 
 export default function NavBar() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary nav ">
+    <Navbar expand="lg" className="bg-white nav ">
 
       <Navbar.Brand className='py-0' >
         <img src={navLogo} alt="" />
