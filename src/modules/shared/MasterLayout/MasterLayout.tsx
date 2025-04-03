@@ -7,11 +7,11 @@ export default function MasterLayout() {
   return (
     <>
       <NavBar />
-    <div className="d-flex ">
+    <div className="d-flex">
     {/* Pass collapsed state and toggle function to Sidebar */}
     <SideBar collapsed={collapsed} setCollapsed={setCollapsed} />
     {/* Adjust mainContent margin dynamically */}
-    <div className={` mt-5 pt-3 ps-4 mainContent ${collapsed ? 'collapsed' : ''}`}>
+    <div className={` mt-5 pt-3 mainContent ${collapsed ? 'collapsed' : ''}`}>
       <Outlet />
     </div>
   </div>
