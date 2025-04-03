@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css'
-import Button from "react-bootstrap/Button";
 import AuthLayout from './modules/shared/AuthLayout/AuthLayout';
 import NotFound from './modules/shared/NotFound/NotFound';
 import Login from './modules/Authentication/Login/Login';
@@ -12,7 +11,35 @@ import MasterLayout from './modules/shared/MasterLayout/MasterLayout';
 import Dashboard from './modules/Dashboard/Dashboard';
 import { ToastContainer } from 'react-toastify';
 
+import {jwtDecode} from "jwt-decode";
+import {useEffect, useState} from "react";
+import {DecodedToken, UserData} from "./modules/Interfaces/User.ts";
+import { Bounce, ToastContainer } from 'react-toastify';
 function App() {
+
+
+
+    const [, setLoginData] = useState<UserData | null>(null)
+
+    const saveLoginData = (userData: UserData) => {
+        setLoginData(userData);
+    };
+
+    useEffect(() => {
+        const token: string | null = localStorage.getItem('token');
+        if (token) {
+            try {
+                const decodedData = jwtDecode<DecodedToken>(token);
+                if (decodedData.user) {
+                    setLoginData(decodedData.user);
+                }
+            } catch (error) {
+                console.error("Invalid token", error);
+                localStorage.removeItem('token');
+            }
+        }
+    }, [])
+
   const routes = createBrowserRouter(
     [
       {
@@ -20,8 +47,8 @@ function App() {
         element:<AuthLayout/>,
         errorElement:<NotFound/>,
         children:[
-          {index:true,element:<Login/>},
-          {path:"login",element:<Login/>},
+          {index:true,element:<Login saveLoginData={saveLoginData}/>},
+          {path:"login",element:<Login saveLoginData={saveLoginData}/>},
           { path: "register", element: <Register /> },
           { path: "forget-password", element: <ForgetPass /> },
           { path: "reset-password", element: <ResetPass /> },
@@ -42,6 +69,22 @@ function App() {
     <>
       <ToastContainer />
       <RouterProvider router={routes} />
+    <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+transition={Bounce}
+/>
+          <RouterProvider router={routes}></RouterProvider>
+
+     
     </>
   );
 
