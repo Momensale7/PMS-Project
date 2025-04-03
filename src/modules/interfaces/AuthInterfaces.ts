@@ -16,3 +16,7 @@
    email?: string;
  }
  
+ export interface pattern {
+  value: RegExp;
+  message: string;
+}
