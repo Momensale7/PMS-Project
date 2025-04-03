@@ -51,7 +51,7 @@ export default function ProjectsList() {
   const deleteProject = async (): Promise<void> => {
     setIsDeleting(true)
     try {
-      const response = await privateAxiosInstance.get(PROJECT_URLS.delete_PROJECT(itemToDelete));
+      const response = await privateAxiosInstance.delete(PROJECT_URLS.delete_PROJECT(itemToDelete));
       console.log(response);
       toast.success(response?.data?.message || "Deleted successfully")
       getProjects()
@@ -100,7 +100,7 @@ export default function ProjectsList() {
             Add New Project</Link>
         </div>
         <div className="ms-4 project bg-white pt-3 rounded-2">
-          <div className="position-relative">
+          <div className="position-relative ms-4">
             <Form.Control
             onInput={handleTitleValue}
               type="search"
@@ -143,7 +143,7 @@ export default function ProjectsList() {
                     </Dropdown>
                   </td>
                 </tr>
-              )) : <tr><NoData /></tr>}
+              )) : <tr><td colSpan={6}><NoData /></td></tr>}
             </tbody>
           </Table>
         </div>
