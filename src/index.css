@@ -275,5 +275,15 @@ color: var(--main-color) ;
     border-radius: 24px;
 }
 .project .table-responsive{
-    padding-block: 50px;
+    padding-bottom: 50px;
+}
+.w-200{
+    width: 200px;
+}
+.search{
+    top: 13px;
+    left:12px
+}
+.searchInput{
+    padding-left: 30px !important;
 }

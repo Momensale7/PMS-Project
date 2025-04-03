@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { Dropdown, Table } from 'react-bootstrap'
+import { Dropdown, Form, Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Project, ProjectResponse } from '../../Interfaces/project';
 import { privateAxiosInstance } from '../../services/api/apiInstance';
@@ -21,13 +21,16 @@ export default function ProjectsList() {
   const [itemToDeleteName, setItemToDeleteName] = useState<string | null>(null);
   const [deleteModalshow, setDeleteModalshow] = useState<boolean>(false);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>("");
   
-// * get projects list
+
+  // * get projects list
   const getProjects = async (): Promise<void> => {
     setIsLoading(true)
     try {
       const response = await privateAxiosInstance.get<ProjectResponse>(PROJECT_URLS.GET_PROJECTS_BY_MANAGER, {
         params: {
+          title,
           pageNumber,
           pageSize
         }
@@ -68,9 +71,15 @@ export default function ProjectsList() {
     setItemToDeleteName(name);
     setDeleteModalshow(true)
   }
+
+  // *search
+  const handleTitleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+    setPageNumber(1);
+  };
   useEffect(() => {
     getProjects();
-  }, [])
+  }, [title])
 
 
 
@@ -80,7 +89,7 @@ export default function ProjectsList() {
       <DeleteConfirmation
         handleClose={() => setDeleteModalshow(false)}
         show={deleteModalshow}
-        onConfirm={deleteProject} 
+        onConfirm={deleteProject}
         message={`are you sure that you want to delete project ${itemToDeleteName}`}
         isDeleting={isDeleting} />
       <div className='projects'>
@@ -90,8 +99,17 @@ export default function ProjectsList() {
             <i className='fa fa-plus me-2'></i>
             Add New Project</Link>
         </div>
-        <div className="ms-4 project">
-          <Table responsive striped bordered hover className='py-5'>
+        <div className="ms-4 project bg-white pt-3 rounded-2">
+          <div className="position-relative">
+            <Form.Control
+            onInput={handleTitleValue}
+              type="search"
+              placeholder="Search by Title"
+              className="projecInput searchInput w-200"
+            />
+            <i className="fa fa-search position-absolute search text-gray-400"></i>
+          </div>
+          <Table responsive striped bordered hover className='mt-3'>
             <thead>
               <tr>
                 <th>#</th>
@@ -103,7 +121,7 @@ export default function ProjectsList() {
               </tr>
             </thead>
             <tbody>
-              {isLoading?<Loading/>:projects.length>0 ? projects?.map((project, index) => (
+              {isLoading ? <Loading /> : projects.length > 0 ? projects?.map((project, index) => (
                 <tr key={index}>
                   <td>{project?.id}</td>
                   <td>{project?.title}</td>
@@ -118,14 +136,14 @@ export default function ProjectsList() {
                         <i className="fa fa-ellipsis-v textContent"></i>
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                        <Dropdown.Item  className='textContent'><i className="fa fa-eye mx-2"></i>View</Dropdown.Item>
-                        <Dropdown.Item  className='textContent'onClick={() => handleDeleteClick(project?.id, project?.title)}><i className="fa fa-trash mx-2"></i>Delete</Dropdown.Item>
-                        <Dropdown.Item  className='textContent'><Link className='text-decoration-none textContent' to={`/dashboard/projects/${project?.id}`}><i className="fa fa-edit mx-2"></i>Edit</Link></Dropdown.Item>
+                        <Dropdown.Item className='textContent'><i className="fa fa-eye mx-2"></i>View</Dropdown.Item>
+                        <Dropdown.Item className='textContent' onClick={() => handleDeleteClick(project?.id, project?.title)}><i className="fa fa-trash mx-2"></i>Delete</Dropdown.Item>
+                        <Dropdown.Item className='textContent'><Link className='text-decoration-none textContent' to={`/dashboard/projects/${project?.id}`}><i className="fa fa-edit mx-2"></i>Edit</Link></Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   </td>
                 </tr>
-              )):<tr><NoData/></tr>}
+              )) : <tr><NoData /></tr>}
             </tbody>
           </Table>
         </div>
