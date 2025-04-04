@@ -24,7 +24,7 @@ const DashboardCard: React.FC<DashboardCardProps> = ({ color,icon ,status,number
       >
         {icon}
       </div>
-      <p className='text-muted fs-6 mt-2 mb-0 fw-semibold '>{status}</p>
+      <p className='text-muted fs-7 mt-2 mb-0 fw-semibold '>{status}</p>
       <p className='fw-bold fs-4'>{number}</p>  
     </div>
   );
