@@ -1,7 +1,33 @@
-import React from 'react'
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import navLogo from '../../../assets/images/navLogo.png'
+import profileImage from '../../../assets/images/registerAvatar.png'
 
 export default function NavBar() {
   return (
-    <div>NavBar</div>
+    <Navbar expand="lg" className="bg-white nav ">
+
+      <Navbar.Brand className='py-0' >
+        <img src={navLogo} alt="" />
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ms-auto align-items-center  pe-4">
+          <Nav.Link className='py-0 border-end'><i className="fa textMain fa-bell"></i></Nav.Link>
+          <Nav.Link  className='d-flex align-items-center py-0'>
+          
+            <img src={profileImage} alt="Profile" className="profileImage" />
+            <div className="my-0 py-0">
+            <a className="nav-link fs-12 my-0 py-0 text-dark-main" aria-current="page" >upskilling</a>
+            <a className="nav-link fs-12 my-0 py-0 text-dark-main" aria-current="page" >upskilling@gmail.com</a>
+            </div>
+          </Nav.Link>
+          <NavDropdown title="" id="basic-nav-dropdown">
+            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   )
 }

@@ -26,6 +26,24 @@
     font-size: .9rem;
 }
 /* Register */
+
+/* *general stayling */
+body {
+    background-color: #F5F5F5;
+}
+.textMain {
+    color: var(--main-color) !important;
+}
+.textMaster {
+    color: #4F4F4F;
+}
+.textContent{
+    color: #0E382F;
+}
+.pointer{
+    cursor: pointer;
+}
+
 .form{
     text-align: left;
 }
@@ -155,6 +173,7 @@ color: var(--main-color) ;
 
 }
 
+
 /* Dashboard */
 
 .dashboard-card{
@@ -189,4 +208,148 @@ color: var(--main-color) ;
     font-size: 24px;
     color: #333;
     margin-bottom: 10px;
+=======
+** side bar */
+.sidebarContainer .logoLi {
+    padding: 38px 50px 71px 0px;
+    /* text-align: center; */
+}
+
+.sidebarContainer {
+    width: 250px;
+    position: fixed;
+    /* height: 100vh; */
+    top: 0;
+    left: 0;
+    transition: all 0.3s ;
+  }
+  .sidebarCollapsed {
+    width: 80px; /* Collapsed width */
+  }
+  
+  .fs-12 {
+    font-size: 12px !important;
+}
+
+.sidebarContainer .logoLi {
+    padding: 38px 50px 71px 0px;
+}
+ 
+.sidebarContainer .ps-sidebar-container {
+    padding-top: 50px;
+    background-color: #0E382F;
+    height: 100vh;
+    color: #fff;
+}
+
+.sidebarContainer .ps-menu-button:hover {
+    background-color: rgba(239,155,40, 0.3) !important;
+    border-radius: 8px;
+
+}
+
+.sidebarContainer .ps-menu-button {
+    /* margin-inline: 10px; */
+    transition: all 0.3s;
+}
+/* class="ps-menuitem-root mb-3 css-1t8x7v1" */
+.sidebarContainer .active{
+    background-color: rgba(239,155,40, 0.3) !important;
+    border-radius: 8px;
+    /* margin-inline: 10px; */
+}
+.sidebarContainer  .active i{
+    color: rgba(239,155,40) !important;
+}
+
+.sidebarContainer .logoLi a:hover {
+    background-color: transparent !important;
+    border-left: none
+}
+.bgMain {
+    background-color: var(--main-color) !important;
+}
+.btnToggle{
+    width: 16px;
+    height: 32px;
+    border-radius: 4px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border: 0px !important;
+}
+.btnCollapsed{
+        transform: rotate(180deg) translateX(-100%);
+        position: fixed;
+        /* z-index: 9999999; */
+}
+.mt-6{
+    margin-top: 50px;
+}
+/** masterLayout */
+.mainContent {
+    margin-left: 250px; /* Default (expanded) */
+    width: calc(100% - 250px);
+    transition: all 0.3s;
+  }
+  .mainContent.collapsed {
+    margin-left: 96px; /* When collapsed */
+    width: calc(100% - 80px);
+    position: relative;
+  }
+  .nav{
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+}
+.profileImage {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.btn-custom{
+    width: 202px;
+    height: 40px;
+    border-radius: 32px;
+}
+/* * projects table */
+.table-striped>thead>tr >* {
+    background-color: rgba(49, 89, 91,0.9) !important;
+    color: white;
+    font-size: 14px;
+}
+/* .table-striped>tbody>tr:nth-of-type(odd)>* {} */
+.projects .dropdown-toggle::after {
+   display: none; 
+}
+
+.projectForm{
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    margin: auto;
+}
+.ProjectsBtn{
+    width: 94px;
+    height: 48px;
+    border-radius: 24px;
+}
+.projecInput{
+    border-radius: 24px;
+}
+.project .table-responsive{
+    padding-bottom: 50px;
+}
+.w-200{
+    width: 200px;
+}
+.search{
+    top: 13px;
+    left:12px
+}
+.searchInput{
+    padding-left: 30px !important;
+
 }
