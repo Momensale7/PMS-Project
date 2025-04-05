@@ -25,7 +25,6 @@ export default function UsersList() {
     const [users, setUsers] = useState([]);
     let getUsers = async (pageSize: number, pageNumber: number) => {
         try {
-            setIsLoading(true);
             let response = await privateAxiosInstance.get(USER_URLS.GET_USERS, {
                 params: {
                     pageSize: pageSize,
@@ -52,7 +51,6 @@ export default function UsersList() {
 
     let toggleUserStatus = async (id: string) => {
         try {
-            setIsLoading(true);
             let response = await privateAxiosInstance.put(
                 USER_URLS.TOGGLE_USER_STATUS(id)
             );
@@ -68,11 +66,13 @@ export default function UsersList() {
             }
         } finally {
             setIsLoading(false);
+            getUsers(50, currentPage)
         }
     };
 
     useEffect(() => {
         getUsers(50, currentPage).then((r) => console.log(r));
+        // console.log(users[0].isActivated);
     }, []);
     return (
         <>
