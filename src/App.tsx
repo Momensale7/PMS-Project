@@ -15,6 +15,11 @@ import {jwtDecode} from "jwt-decode";
 import {useEffect, useState} from "react";
 import {DecodedToken, UserData} from "./modules/Interfaces/User.ts";
 import { Bounce, ToastContainer } from 'react-toastify';
+import ProjectsList from './modules/Projects/ProjectsList/ProjectsList.tsx';
+import ProjectData from './modules/Projects/ProjectData/ProjectData.tsx';
+import TasksList from './modules/Tasks/TasksList/TasksList.tsx';
+import TaskData from './modules/Tasks/TaskData/TaskData.tsx';
+import UsersList from './modules/Users/UsersList/UsersList.tsx';
 function App() {
 
 
@@ -61,6 +66,14 @@ function App() {
         errorElement:<NotFound/>,
         children:[ 
           {index:true,element:<Dashboard/>},          
+          {path:'projects',element:<ProjectsList/>},          
+          {path:'projects/new-Project',element:<ProjectData/>},          
+          {path:'projects/:id',element:<ProjectData/>},
+          {path:'tasks',element:<TasksList/>},          
+          {path:'tasks/new-task',element:<TaskData/>},          
+          {path:'tasks/:id',element:<TaskData/>},
+          {path:'users',element:<UsersList/>},
+
         ]
       }
     ]);

@@ -9,5 +9,15 @@ export const USER_URLS={
     RESET_PASS:`/Users/Reset`,
     CHANGE_PASS:`/Users/ChangePassword`,
     GET_USERS:`/Users`,
+    GET_USERS_COUNT:`/Users/count`,
     VERIFY:`/Users/Verify`,
 }
+
+export const PROJECT_URLS = {
+    GET_PROJECTS_BY_MANAGER: '/Project/manager',
+    GET_PROJECTS_BY_EMPLOYEE: '/Project/employee',
+    CREATE_PROJECT: '/Project',
+    UPDATE_PROJECT: (id: string | undefined) => `/Project/${id}`,
+    delete_PROJECT: (id: number) => `/Project/${id}`,
+    GET_PROJECT: (id: string |  undefined) => `/Project/${id}`,
+  };
