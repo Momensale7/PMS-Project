@@ -1,6 +1,32 @@
 :root{
     --main-color:#EF9B28;
+    --theme-color--light:#f8f9fb;
+    --theme-color--body:#F5f5f5;
+
 }
+
+/* Utitites */
+.header-bg{
+    background-image: url('./assets/images/home-bg.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 313px;
+}
+.main-color{
+    color: var(--main-color);
+}
+.bg-dashboard-light{
+    background-color: var(--theme-color--light);
+}
+.bg-dashboard-body{
+    background-color: var(--theme-color--body);
+}
+.fs-7{
+    font-size: .9rem;
+}
+/* Register */
+
 /* *general stayling */
 body {
     background-color: #F5F5F5;
@@ -17,6 +43,7 @@ body {
 .pointer{
     cursor: pointer;
 }
+
 .form{
     text-align: left;
 }
@@ -98,6 +125,7 @@ color: var(--main-color) ;
     overflow: hidden;
 }
 
+/* AuthLayout */
 .overlay{
     position: absolute;
     top: 0;
@@ -144,6 +172,43 @@ color: var(--main-color) ;
     bottom: 0;
 
 }
+
+
+/* Dashboard */
+
+.dashboard-card{
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.card-left-line{
+    position: relative;
+}
+.card-left-line::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.8px;
+    height: 100%;
+    background-color: var(--main-color);
+
+}
+
+.dashboard-card .dashboard-icon{
+    width: 40px;
+    height: 40px;
+    background-color: #f2f2f2;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+=======
 ** side bar */
 .sidebarContainer .logoLi {
     padding: 38px 50px 71px 0px;
@@ -286,4 +351,5 @@ color: var(--main-color) ;
 }
 .searchInput{
     padding-left: 30px !important;
+
 }

@@ -1,7 +1,9 @@
+
 import React, { useState } from 'react'
 import SideBar from '../SideBar/SideBar'
 import { Outlet } from 'react-router-dom'
 import NavBar from '../NavBar/NavBar'
+
 export default function MasterLayout() {
   const [collapsed, setCollapsed] = useState(false)
   return (
@@ -16,5 +18,6 @@ export default function MasterLayout() {
     </div>
   </div>
     </>
+
   )
 }
