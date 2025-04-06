@@ -5,5 +5,6 @@ export interface SideBarProps {
   export interface menuItems {
     to:string,
     icon:string,
-    label :string
+    label :string,
+    showOnlyFor?: string;
   }
