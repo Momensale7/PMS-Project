@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Dropdown, Form, Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Project, ProjectResponse } from '../../Interfaces/project';
@@ -10,8 +10,11 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import NoData from '../../shared/NoData/NoData';
 import Loading from '../../shared/Loading/Loading';
+import { Authcontext } from '../../AuthContext/AuthContext';
 
 export default function ProjectsList() {
+  const authContext = useContext(Authcontext)
+  const role = authContext?.role
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [pageNumber, setPageNumber] = useState<number>(1);
@@ -22,7 +25,7 @@ export default function ProjectsList() {
   const [deleteModalshow, setDeleteModalshow] = useState<boolean>(false);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
-  
+
 
   // * get projects list
   const getProjects = async (): Promise<void> => {
@@ -95,14 +98,14 @@ export default function ProjectsList() {
       <div className='projects'>
         <div className="bg-white d-flex align-items-center justify-content-between py-3 px-4 mb-3">
           <h3 className='h3 textMaster fw-medium'>Projects</h3>
-          <Link className='btn bgMain btn-custom text-white' to={'/dashboard/projects/new-Project'}>
+          {role ==="Manager" && <Link className='btn bgMain btn-custom text-white' to={'/dashboard/projects/new-Project'}>
             <i className='fa fa-plus me-2'></i>
-            Add New Project</Link>
+            Add New Project</Link>}
         </div>
         <div className="ms-4 project bg-white pt-3 rounded-2">
           <div className="position-relative ms-4">
             <Form.Control
-            onInput={handleTitleValue}
+              onInput={handleTitleValue}
               type="search"
               placeholder="Search by Title"
               className="projecInput searchInput w-200"
@@ -137,8 +140,10 @@ export default function ProjectsList() {
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown.Item className='textContent'><i className="fa fa-eye mx-2"></i>View</Dropdown.Item>
+                        {role==='Manager' &&<>
                         <Dropdown.Item className='textContent' onClick={() => handleDeleteClick(project?.id, project?.title)}><i className="fa fa-trash mx-2"></i>Delete</Dropdown.Item>
                         <Dropdown.Item className='textContent'><Link className='text-decoration-none textContent' to={`/dashboard/projects/${project?.id}`}><i className="fa fa-edit mx-2"></i>Edit</Link></Dropdown.Item>
+                        </>}
                       </Dropdown.Menu>
                     </Dropdown>
                   </td>
