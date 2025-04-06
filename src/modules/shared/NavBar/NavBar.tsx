@@ -8,10 +8,7 @@ import { useContext } from 'react';
 
 export default function NavBar() {
     const authContext = useContext(Authcontext);
-    if (!authContext) {
-      throw new Error("Authcontext is not provided");
-    }
-    const { loginData } = authContext;
+    const loginData  = authContext?.loginData;
   return (
     <Navbar expand="lg" className="bg-white nav ">
 

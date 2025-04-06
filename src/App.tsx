@@ -15,6 +15,7 @@ import ProjectData from './modules/Projects/ProjectData/ProjectData.tsx';
 import TasksList from './modules/Tasks/TasksList/TasksList.tsx';
 import TaskData from './modules/Tasks/TaskData/TaskData.tsx';
 import UsersList from './modules/Users/UsersList/UsersList.tsx';
+import ProtectedRoute from './modules/shared/ProtectedRoute/ProtectedRoute.tsx';
 function App() {
   const routes = createBrowserRouter(
     [
@@ -33,7 +34,7 @@ function App() {
       },
       {
         path:'dashboard',
-        element:<MasterLayout/>,
+        element:<ProtectedRoute><MasterLayout/></ProtectedRoute>,
         errorElement:<NotFound/>,
         children:[ 
           {index:true,element:<Dashboard/>},          

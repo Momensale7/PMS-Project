@@ -18,8 +18,6 @@ export default function Login() {
     throw new Error("Authcontext is not provided");
   }
   const { saveLoginData } = authContext;
-
-
   const {
     register,
     formState: { errors },
