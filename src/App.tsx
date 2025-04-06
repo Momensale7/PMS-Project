@@ -19,9 +19,6 @@ import TasksList from './modules/Tasks/TasksList/TasksList.tsx';
 import TaskData from './modules/Tasks/TaskData/TaskData.tsx';
 import UsersList from './modules/Users/UsersList/UsersList.tsx';
 function App() {
-
-
-
     const [, setLoginData] = useState<UserData | null>(null)
 
     const saveLoginData = (userData: UserData) => {
@@ -78,8 +75,6 @@ function App() {
 
   return (
     <>
-      <ToastContainer />
-      <RouterProvider router={routes} />
     <ToastContainer
 position="top-right"
 autoClose={5000}
