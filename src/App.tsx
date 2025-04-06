@@ -9,8 +9,6 @@ import VerifyAccount from './modules/Authentication/VerifyAccount/VerifyAccount'
 import Register from './modules/Authentication/Register/Register';
 import MasterLayout from './modules/shared/MasterLayout/MasterLayout';
 import Dashboard from './modules/Dashboard/Dashboard';
-import { ToastContainer } from 'react-toastify';
-
 import {jwtDecode} from "jwt-decode";
 import {useEffect, useState} from "react";
 import {DecodedToken, UserData} from "./modules/Interfaces/User.ts";
