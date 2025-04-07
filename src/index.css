@@ -1,3 +1,21 @@
+
+
+:root{
+    --color-primary: #EF9B28;
+}
+
+
+
+::placeholder {
+    color: white !important;
+    opacity: 1;
+}
+
+.form-control:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
 :root{
     --main-color:#EF9B28;
     --theme-color--light:#f8f9fb;
@@ -175,6 +193,8 @@ color: var(--main-color) ;
     bottom: 0;
 
 }
+
+
 
 
 /* Dashboard */
@@ -361,3 +381,4 @@ color: var(--main-color) ;
     border: none;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
+
