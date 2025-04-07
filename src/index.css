@@ -1,11 +1,4 @@
 
-
-:root{
-    --color-primary: #EF9B28;
-}
-
-
-
 ::placeholder {
     color: white !important;
     opacity: 1;
@@ -20,9 +13,30 @@
     --main-color:#EF9B28;
     --theme-color--light:#f8f9fb;
     --theme-color--body:#F5f5f5;
+    --dark-body:#FFF;
+    --nav-dark:#FFF;
+    --nav-text-dark:black;
+    --dark-card-color:#F8F9FB;
 
 }
+:root[theme="dark"]{
+    --dark-body:#68946f;
+    --nav-dark:#508659;
+    --nav-text-dark:#fff ;
+    --dark-card-color:#dffae8;
 
+
+}
+.nav{
+    background-color: var(--nav-dark);
+}
+.nav-link {
+    color: var(--nav-text-dark) !important;
+
+}
+.dark-bg{
+ background-color: var(--dark-body);
+}
 /* Utitites */
 .header-bg{
     background-image: url('./assets/images/home-bg.png');
@@ -43,11 +57,25 @@
 .fs-7{
     font-size: .9rem;
 }
+
+.btn-orange {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--main-color);
+    --bs-btn-border-color: var(--main-color);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg:#b6771e ;
+}
+
+.text-orange{
+    color:var(--main-color)
+}
+
 /* Register */
 
 /* *general stayling */
 body {
-    background-color: #F5F5F5;
+    /* background-color: #F5F5F5; */
+    background-color: var(--dark-body);
 }
 .textMain {
     color: var(--main-color) !important;
@@ -216,6 +244,9 @@ color: var(--main-color) ;
     background-color: var(--main-color);
 
 }
+.box-dark-color{
+    background-color: var(--dark-card-color);
+}
 
 .dashboard-card .dashboard-icon{
     width: 40px;
@@ -228,7 +259,7 @@ color: var(--main-color) ;
     font-size: 24px;
     color: #333;
     margin-bottom: 10px;
-=======
+}
 ** side bar */
 .sidebarContainer .logoLi {
     padding: 38px 50px 71px 0px;
@@ -374,3 +405,32 @@ color: var(--main-color) ;
 
 }
 
+/* Not found page */
+.not-found{
+    background-image: url('../src/assets/notFoundbg.png');
+    background-position: center center;
+    background-size: cover;
+}
+
+.not-found-page{
+    background-color: #0E382F;
+    color: #fff ;
+    position: relative;
+}
+.not-found-page .overlay{
+    background-color: rgba(0, 0, 0, 0.255);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.not-found-img{
+    width: 100%;
+    max-width: 600px;
+}
+
+
+/* Navebar  */
+.dropdown-menu[data-bs-popper] {
+    right: 0 !important;
+    left: auto;
+}
