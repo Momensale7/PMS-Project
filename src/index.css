@@ -53,6 +53,9 @@ body {
     border-bottom: 0.3px solid #fff;
     border-radius: 0;
     color: #fff;
+    display: flex;
+    gap: 3rem;
+    
 }
 
 .form  .form-control:focus {
@@ -208,8 +211,7 @@ color: var(--main-color) ;
     font-size: 24px;
     color: #333;
     margin-bottom: 10px;
-=======
-** side bar */
+}
 .sidebarContainer .logoLi {
     padding: 38px 50px 71px 0px;
     /* text-align: center; */
@@ -352,4 +354,10 @@ color: var(--main-color) ;
 .searchInput{
     padding-left: 30px !important;
 
+}
+
+.dropdown-menu.show{
+    border-radius: 1.5rem;
+    border: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }

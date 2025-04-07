@@ -21,3 +21,12 @@ export const PROJECT_URLS = {
     delete_PROJECT: (id: number) => `/Project/${id}`,
     GET_PROJECT: (id: string |  undefined) => `/Project/${id}`,
   };
+
+  export const TASKS_URLS = {
+    GET_TASKS_BY_MANAGER: "/Task/manager",
+    GET_TASKS_BY_EMPLOYEE: "/Task/employee",
+    CREATE_TASKS: "/Task",
+    UPDATE_TASKS: (id: string | undefined) => `/Task/${id}`,
+    DELETE_TASKS: (id: number) => `/Task/${id}`,
+    GET_TASKS: (id: string | undefined) => `/Task/${id}`,
+  };
