@@ -9,7 +9,7 @@ import {puplicAxiosInstance} from "../../services/api/apiInstance.ts";
 import {AxiosError} from "axios";
 import styles from './login.module.css';
 import {LoginFormData, LoginResponse} from "../../Interfaces/User.ts";
-import { Authcontext } from "../../AuthContext/AuthContext.tsx";
+import { Authcontext } from "../../../context/AuthContext/AuthContext.tsx";
 
 export default function Login() {
   const authContext = useContext(Authcontext);

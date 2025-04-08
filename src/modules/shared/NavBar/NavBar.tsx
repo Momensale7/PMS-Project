@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import navLogo from '../../../assets/images/navLogo.png'
 import profileImage from '../../../assets/images/registerAvatar.png'
-import { Authcontext } from '../../AuthContext/AuthContext';
+import { Authcontext } from '../../../context/AuthContext/AuthContext';
 import { useContext } from 'react';
 
 export default function NavBar() {
