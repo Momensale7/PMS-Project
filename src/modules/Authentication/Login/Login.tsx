@@ -2,15 +2,22 @@ import { Link, useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { EMAIL_VALIDATION, PASSWORD_VALIDATION } from "../../services/validation/validation.ts";
 import { USER_URLS } from "../../services/api/apiConfig.ts";
 import {puplicAxiosInstance} from "../../services/api/apiInstance.ts";
 import {AxiosError} from "axios";
 import styles from './login.module.css';
-import {LoginFormData, LoginResponse, Props} from "../../Interfaces/User.ts";
+import {LoginFormData, LoginResponse} from "../../Interfaces/User.ts";
+import { Authcontext } from "../../AuthContext/AuthContext.tsx";
 
-export default function Login({ saveLoginData }: Props) {
+export default function Login() {
+  const authContext = useContext(Authcontext);
+
+  if (!authContext) {
+    throw new Error("Authcontext is not provided");
+  }
+  const { saveLoginData } = authContext;
   const {
     register,
     formState: { errors },
@@ -26,8 +33,7 @@ export default function Login({ saveLoginData }: Props) {
           data
       );
       localStorage.setItem('token', response.data.token);
-      saveLoginData(response.data.user);
-
+      saveLoginData();
       toast.success('welcome');
       navigate('/dashboard');
     } catch (error) {

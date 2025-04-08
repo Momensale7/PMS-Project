@@ -9,42 +9,14 @@ import VerifyAccount from './modules/Authentication/VerifyAccount/VerifyAccount'
 import Register from './modules/Authentication/Register/Register';
 import MasterLayout from './modules/shared/MasterLayout/MasterLayout';
 import Dashboard from './modules/Dashboard/Dashboard';
-import { ToastContainer } from 'react-toastify';
-
-import {jwtDecode} from "jwt-decode";
-import {useEffect, useState} from "react";
-import {DecodedToken, UserData} from "./modules/Interfaces/User.ts";
 import { Bounce, ToastContainer } from 'react-toastify';
 import ProjectsList from './modules/Projects/ProjectsList/ProjectsList.tsx';
 import ProjectData from './modules/Projects/ProjectData/ProjectData.tsx';
 import TasksList from './modules/Tasks/TasksList/TasksList.tsx';
 import TaskData from './modules/Tasks/TaskData/TaskData.tsx';
 import UsersList from './modules/Users/UsersList/UsersList.tsx';
+import ProtectedRoute from './modules/shared/ProtectedRoute/ProtectedRoute.tsx';
 function App() {
-
-
-
-    const [, setLoginData] = useState<UserData | null>(null)
-
-    const saveLoginData = (userData: UserData) => {
-        setLoginData(userData);
-    };
-
-    useEffect(() => {
-        const token: string | null = localStorage.getItem('token');
-        if (token) {
-            try {
-                const decodedData = jwtDecode<DecodedToken>(token);
-                if (decodedData.user) {
-                    setLoginData(decodedData.user);
-                }
-            } catch (error) {
-                console.error("Invalid token", error);
-                localStorage.removeItem('token');
-            }
-        }
-    }, [])
-
   const routes = createBrowserRouter(
     [
       {
@@ -52,8 +24,8 @@ function App() {
         element:<AuthLayout/>,
         errorElement:<NotFound/>,
         children:[
-          {index:true,element:<Login saveLoginData={saveLoginData}/>},
-          {path:"login",element:<Login saveLoginData={saveLoginData}/>},
+          {index:true,element:<Login/>},
+          {path:"login",element:<Login/>},
           { path: "register", element: <Register /> },
           { path: "forget-password", element: <ForgetPass /> },
           { path: "reset-password", element: <ResetPass /> },
@@ -62,7 +34,7 @@ function App() {
       },
       {
         path:'dashboard',
-        element:<MasterLayout/>,
+        element:<ProtectedRoute><MasterLayout/></ProtectedRoute>,
         errorElement:<NotFound/>,
         children:[ 
           {index:true,element:<Dashboard/>},          
@@ -80,8 +52,6 @@ function App() {
 
   return (
     <>
-      <ToastContainer />
-      <RouterProvider router={routes} />
     <ToastContainer
 position="top-right"
 autoClose={5000}
