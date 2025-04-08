@@ -11,6 +11,7 @@ import axios from 'axios';
 import NoData from '../../shared/NoData/NoData';
 import Loading from '../../shared/Loading/Loading';
 import { Authcontext } from '../../AuthContext/AuthContext';
+import TableActions from '../../shared/TableActions/TableActions';
 
 export default function ProjectsList() {
   const authContext = useContext(Authcontext)
@@ -134,18 +135,13 @@ export default function ProjectsList() {
                   })}</td>
                   <td>{project?.tasks?.map(task => task?.name).join(', ')}</td>
                   <td>
-                    <Dropdown>
-                      <Dropdown.Toggle className='bg-transparent border-0' id="dropdown-basic">
-                        <i className="fa fa-ellipsis-v textContent"></i>
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        <Dropdown.Item className='textContent'><i className="fa fa-eye mx-2"></i>View</Dropdown.Item>
-                        {role==='Manager' &&<>
-                        <Dropdown.Item className='textContent' onClick={() => handleDeleteClick(project?.id, project?.title)}><i className="fa fa-trash mx-2"></i>Delete</Dropdown.Item>
-                        <Dropdown.Item className='textContent'><Link className='text-decoration-none textContent' to={`/dashboard/projects/${project?.id}`}><i className="fa fa-edit mx-2"></i>Edit</Link></Dropdown.Item>
-                        </>}
-                      </Dropdown.Menu>
-                    </Dropdown>
+                    <TableActions 
+                      itemID={project?.id}
+                      itemName={project?.title}
+                      role={role}
+                      onDelete={handleDeleteClick}
+                    />
+                   
                   </td>
                 </tr>
               )) : <tr><td colSpan={6}><NoData /></td></tr>}
