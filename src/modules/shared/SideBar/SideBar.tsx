@@ -1,23 +1,32 @@
-import { useState } from "react";
+import {useContext, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
 import { Link, NavLink } from "react-router-dom";
 import { menuItems, SideBarProps } from "../../Interfaces/layout";
+import { Authcontext } from "../../AuthContext/AuthContext";
 
 
 
 export default function SideBar({ collapsed, setCollapsed }: SideBarProps) {
+  const authContext = useContext(Authcontext)
+  const role = authContext?.role
   const [showchangePass, setShowChangePass] = useState(false)
   const toggleCollapse = () => {
     setCollapsed(!collapsed)
   }
 
-  const menuItems:menuItems[] = [
+  const menuItems: menuItems[] = [
     { to: "/dashboard", icon: "fa-home", label: "Home" },
-    { to: "users", icon: "fa-users", label: "Users" },
+    { to: "users", icon: "fa-users", label: "Users", showOnlyFor: "Manager" },
     { to: "projects", icon: "fa-folder", label: "Projects" },
     { to: "tasks", icon: "fa-tasks", label: "Tasks" },
   ];
+  const filteredMenuItems = menuItems.filter(item => {
+    if (item.showOnlyFor && role) {
+      return item.showOnlyFor === role;
+    }
+    return true;
+  });
   return (
     <>
       <div className="sidebarContainer  ">
@@ -32,7 +41,7 @@ export default function SideBar({ collapsed, setCollapsed }: SideBarProps) {
             </Button>
           </div>
           <Menu className={`${collapsed ? 'px-0 mt-6' : 'px-3'}`}>
-            {menuItems.map((item, index) => (
+            {filteredMenuItems.map((item, index) => (
               <MenuItem key={index} className='mb-3' icon={<i className={`fa ${item.icon} text-white`}></i>} component={showchangePass ? <Link to={item.to} className='text-white' /> : <NavLink end to={item.to} className='text-white' />}>
                 {item.label}
               </MenuItem>
