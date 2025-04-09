@@ -29,7 +29,7 @@ const ProgressChart = () => {
         getProgressCount();
     }, []);
     return (
-        <div className="py-3 bg-dashboard-light rounded-2">
+        <div className="box-dark-color py-3 bg-dashboard-light rounded-2">
             <div className="card-left-line px-5">
                 <h5>Progress</h5>
                 <p className="text-muted">Lorem ipsum dolor sit amet consectetur.</p>
