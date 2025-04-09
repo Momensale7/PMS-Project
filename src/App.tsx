@@ -54,7 +54,6 @@ function App() {
   return (
     <>
 
-      <RouterProvider router={routes} />
 
     <ToastContainer
 position="top-right"

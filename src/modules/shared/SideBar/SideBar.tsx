@@ -31,7 +31,7 @@ export default function SideBar({ collapsed, setCollapsed }: SideBarProps) {
     <>
       <div className="sidebarContainer  ">
         <Sidebar collapsed={collapsed} className='' >
-          <div className="d-flex justify-content-end">
+          <div className="d-flex justify-content-end ">
             <Button
               className={`${collapsed ? 'btnCollapsed' : ''} btn btn-sm d-flex align-items-center justify-content-center bgMain my-3 btnToggle text-white`}
               onClick={toggleCollapse}
