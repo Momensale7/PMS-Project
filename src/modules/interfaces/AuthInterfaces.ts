@@ -1,3 +1,4 @@
+
  export interface RegisterFormInputs {
    userName: string;
    email: string;
@@ -19,4 +20,21 @@
  export interface pattern {
   value: RegExp;
   message: string;
+}
+export interface AuthContextProviderProps {
+  children: React.ReactNode;
+}
+export interface UserTokenPayload {
+  userId: number;
+  userName: string;
+  userEmail: string;
+  userGroup: string;
+  roles: string[];
+  iat: number; 
+  exp: number; 
+}
+export interface AuthContextType {
+  loginData: UserTokenPayload | null;
+  saveLoginData: () => void;
+  role: string;
 }
