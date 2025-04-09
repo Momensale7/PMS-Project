@@ -49,6 +49,10 @@
 body {
     background-color: #F5F5F5;
 }
+.bgBoard{
+    background-color: rgba(49, 89, 91,0.9) !important;
+
+}
 .textMain {
     color: var(--main-color) !important;
 }
@@ -375,3 +379,6 @@ color: var(--main-color) ;
 
 }
 
+.boardContainer{
+    min-height: 300px;
+}

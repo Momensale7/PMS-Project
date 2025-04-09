@@ -15,7 +15,7 @@ export default function TableActions({
       <Dropdown.Menu>
         <Dropdown.Item className="textContent">
           <i className="fa fa-eye mx-2"></i>
-          {itemName}
+          view
         </Dropdown.Item>
         {role === "Manager" && (
           <>

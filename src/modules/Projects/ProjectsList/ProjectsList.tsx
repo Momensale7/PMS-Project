@@ -32,14 +32,21 @@ export default function ProjectsList() {
   const getProjects = async (): Promise<void> => {
     setIsLoading(true)
     try {
-      const response = await privateAxiosInstance.get<ProjectResponse>(PROJECT_URLS.GET_PROJECTS_BY_MANAGER, {
-        params: {
-          title,
-          pageNumber,
-          pageSize
-        }
-
-      });
+      const response = role === 'Manager'
+        ? await privateAxiosInstance.get<ProjectResponse>(PROJECT_URLS.GET_PROJECTS_BY_MANAGER, {
+            params: {
+              title,
+              pageNumber,
+              pageSize
+            }
+          })
+        : await privateAxiosInstance.get<ProjectResponse>(PROJECT_URLS.GET_PROJECTS_BY_EMPLOYEE, {
+            params: {
+              title,
+              pageNumber,
+              pageSize
+            }
+          });
       setProjects(response?.data?.data)
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -84,8 +91,6 @@ export default function ProjectsList() {
   useEffect(() => {
     getProjects();
   }, [title])
-
-
 
 
   return (
