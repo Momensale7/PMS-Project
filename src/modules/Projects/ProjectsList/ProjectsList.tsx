@@ -138,7 +138,7 @@ export default function ProjectsList() {
                   <td>{new Date(project?.creationDate).toLocaleString('en-GB', {
                     day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true
                   })}</td>
-                  <td>{project?.tasks?.map(task => task?.name).join(', ')}</td>
+                  <td>{project?.task?.map(task => task?.title).join(', ')}</td>
                   <td>
                     <TableActions 
                       itemID={project?.id}
