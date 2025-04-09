@@ -2,7 +2,7 @@ import React from 'react'
 import noDataImg from '../../../assets/nodata.png'
 const NoData = () => {
   return (
-    <div className="nodata-container d-flex flex-column align-items-center justify-content-center py-5">
+    <div className="nodata-container text-center d-flex flex-column align-items-center justify-content-center py-5">
         <div>
             <img src={noDataImg } className='w-75' alt="" />
         </div>

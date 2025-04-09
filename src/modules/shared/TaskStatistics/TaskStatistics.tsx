@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
 import DashboardCard from '../DashboardCard/DashboardCard';
 import { privateAxiosInstance } from '../../services/api/apiInstance';
+import { TASK_URLS } from '../../services/api/apiConfig';
 
-const TaskStatistics = () => {
+const TaskStatistics = ({role="manger"}:{role:string}) => {
     const [taskNumber, setTaskNumber] = React.useState<number | null>(null);
   const [projectNumber, setProjectNumber] = React.useState<number | null>(null);
  
      const getProjectCount = async () => {
         try {
-          const { data } = await privateAxiosInstance.get('/Project/manager?pageSize=1&pageNumber=1');
+          const { data } = await privateAxiosInstance.get(TASK_URLS.GET_PROJECT_FOR_MANGER());
           console.log(data);
           setProjectNumber(data?.totalNumberOfRecords);
         } catch (error) {
@@ -18,7 +19,8 @@ const TaskStatistics = () => {
     
       const getTaskCount = async () => {
         try {
-          const { data } = await privateAxiosInstance.get('/Task/manager?pageSize=1&pageNumber=1');
+          
+          const { data } = await privateAxiosInstance.get(role!=="Employee"?TASK_URLS.GET_TASK_FOR_MANGER():TASK_URLS.GET_ALL_MY_ASSIGNED_TASKS);
           console.log(data);
           setTaskNumber(data?.totalNumberOfRecords);
         } catch (error) {
@@ -27,7 +29,12 @@ const TaskStatistics = () => {
       };
     
         useEffect(() => {
+          
+          if(role!=="Employee")
+            {
+            console.log(role,'role');
             getProjectCount();
+          }
             getTaskCount();
         }, []);
   return (
@@ -46,14 +53,15 @@ const TaskStatistics = () => {
           icon={<i className="fa-solid fa-list-check"></i>}
         />
       </div>
-      <div className="col-12 col-sm-6 col-md-6">
+      {role!=="Employee"&& <div className="col-12 col-sm-6 col-md-6">
         <DashboardCard
           status={'Projects Number'}
           number={projectNumber ?? 0}
           color="#E7C3D7"
           icon={<i className="fa-solid fa-chalkboard-user"></i>}
         />
-      </div>
+      </div>}
+     
     </div>
   </div>
   )
