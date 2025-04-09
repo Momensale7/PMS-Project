@@ -38,3 +38,14 @@ export interface AuthContextType {
   saveLoginData: () => void;
   role: string;
 }
+
+export interface ChangePassProps {
+  onClose: () => void;
+  show: boolean;
+}
+
+export interface FormValues {
+  oldPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
+}

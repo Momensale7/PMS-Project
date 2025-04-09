@@ -58,6 +58,9 @@ body {
 .textContent{
     color: #0E382F;
 }
+.bgMainColor{
+    background: #0E382F;
+}
 .pointer{
     cursor: pointer;
 }
@@ -375,3 +378,57 @@ color: var(--main-color) ;
 
 }
 
+/* *change pass */
+.changePassModal .modal-content{
+   border: 0px;
+}
+/* ChangePass.css */
+
+.changePassModal .bottom-border-only {
+    background-color: transparent !important;
+  }
+  
+ .changePassModal  .bottom-border-only .form-control {
+    background-color: transparent;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+ .changePassModal  .bottom-border-only .form-control:focus {
+    box-shadow: none;
+    border-color: transparent;
+  }
+  
+.changePassModal   .bottom-border-only:focus-within {
+    border-bottom: 2px solid #198754 !important; /* Using bootstrap success color */
+    box-shadow: none;
+  }
+  
+  .changePassModal .form-control.is-invalid {
+    background-image: none;
+    border-color: transparent;
+    box-shadow: none;
+  }
+  
+  .changePassModal .form-control.is-invalid:focus {
+    box-shadow: none;
+  }
+  
+  .changePassModal .modal-content  {
+    border-radius: 20px;
+    background-color: #0E382F;
+    overflow: hidden;
+  }
+  
+  
+  
+  .changePassForm .form-control::placeholder {
+    color: #fff;
+  }
+ 
+  .changePassForm .form-control {
+    color: #fff; 
+}
+
+.btn:hover{
+    background-color: transparent;
+}
