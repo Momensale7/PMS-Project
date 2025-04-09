@@ -66,8 +66,6 @@ theme="light"
 transition={Bounce}
 />
           <RouterProvider router={routes}></RouterProvider>
-
-     
     </>
   );
 
