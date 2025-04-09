@@ -8,12 +8,12 @@ import { privateAxiosInstance } from '../../services/api/apiInstance';
 import { USER_URLS } from '../../services/api/apiConfig';
 import axios from 'axios';
 import { ChangePassProps, FormValues } from '../../Interfaces/AuthInterfaces';
+import useTogglePassword from '../../hooks/useTogglePassword';
 
 
 export default function ChangePass({ onClose, show }: ChangePassProps) {
-  const [showNewPassword, setShowNewPassword] = useState<boolean>(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
-  const [showOldPassword, setShowOldPassword] = useState<boolean>(false);
+  const {showPass,showConfirmPass,showOldPass,handleShowPass,handleConfirmPass,handleOldPass}=useTogglePassword()
+
   const {
     register,
     formState: { errors, isSubmitting },
@@ -38,11 +38,7 @@ export default function ChangePass({ onClose, show }: ChangePassProps) {
     }
   };
 
-  const togglePasswordVisibility = (type: "oldPassword" | "new" | "confirm") => {
-    if (type === "confirm") setShowConfirmPassword(!showConfirmPassword);
-    else if (type === "oldPassword") setShowOldPassword(!showOldPassword);
-    else setShowNewPassword(!showNewPassword);
-  };
+  
 
   const newPassword = watch('newPassword');
   const confirmNewPassword = watch('confirmNewPassword');
@@ -76,7 +72,7 @@ export default function ChangePass({ onClose, show }: ChangePassProps) {
             <Form.Label className="mb-2 fw-medium textMain">Current Password</Form.Label>
             <div className="input-group border-bottom border-1 bottom-border-only">
               <Form.Control
-                type={showOldPassword ? "text" : "password"}
+                type={showOldPass ? "text" : "password"}
                 placeholder="Enter your current password"
                 className="border-0 shadow-none"
                 isInvalid={!!errors.oldPassword}
@@ -84,10 +80,10 @@ export default function ChangePass({ onClose, show }: ChangePassProps) {
               />
               <span 
                 className="input-group-text bg-transparent border-0"
-                onClick={() => togglePasswordVisibility("oldPassword")} 
+                onClick={handleOldPass} 
                 style={{ cursor: 'pointer' }}
               >
-                <i className={`text-secondary ${showOldPassword ? "fas fa-eye-slash" : "fas fa-eye"}`}></i>
+                <i className={`text-secondary ${showOldPass ? "fas fa-eye-slash" : "fas fa-eye"}`}></i>
               </span>
             </div>
             {errors.oldPassword && (
@@ -101,7 +97,7 @@ export default function ChangePass({ onClose, show }: ChangePassProps) {
             <Form.Label className="mb-2  textMain">New Password</Form.Label>
             <div className="input-group border-bottom border-1 bottom-border-only">
               <Form.Control
-                type={showNewPassword ? "text" : "password"}
+                type={showPass ? "text" : "password"}
                 placeholder="Enter your new password"
                 className="border-0 shadow-none"
                 isInvalid={!!errors.newPassword}
@@ -109,10 +105,10 @@ export default function ChangePass({ onClose, show }: ChangePassProps) {
               />
               <span 
                 className="input-group-text bg-transparent border-0"
-                onClick={() => togglePasswordVisibility("new")} 
+                onClick={handleShowPass} 
                 style={{ cursor: 'pointer' }}
               >
-                <i className={`text-secondary ${showNewPassword ? "fas fa-eye-slash" : "fas fa-eye"}`}></i>
+                <i className={`text-secondary ${showPass ? "fas fa-eye-slash" : "fas fa-eye"}`}></i>
               </span>
             </div>
             {errors.newPassword && (
@@ -126,7 +122,7 @@ export default function ChangePass({ onClose, show }: ChangePassProps) {
             <Form.Label className="mb-2 fw-medium textMain">Confirm New Password</Form.Label>
             <div className="input-group border-bottom border-1 bottom-border-only">
               <Form.Control
-                type={showConfirmPassword ? "text" : "password"}
+                type={showConfirmPass ? "text" : "password"}
                 placeholder="Confirm your new password"
                 className="border-0 shadow-none"
                 isInvalid={!!errors.confirmNewPassword}
@@ -134,10 +130,10 @@ export default function ChangePass({ onClose, show }: ChangePassProps) {
               />
               <span 
                 className="input-group-text bg-transparent border-0"
-                onClick={() => togglePasswordVisibility("confirm")} 
+                onClick={handleConfirmPass} 
                 style={{ cursor: 'pointer' }}
               >
-                <i className={`text-secondary ${showConfirmPassword ? "fas fa-eye-slash" : "fas fa-eye"}`}></i>
+                <i className={`text-secondary ${showConfirmPass ? "fas fa-eye-slash" : "fas fa-eye"}`}></i>
               </span>
             </div>
             {errors.confirmNewPassword && (
