@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Dropdown, Form, Table } from "react-bootstrap";
+import { Form, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Task, TaskResponse } from "../../Interfaces/Task";
 import { privateAxiosInstance } from "../../services/api/apiInstance";
@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import NoData from "../../shared/NoData/NoData";
 import Loading from "../../shared/Loading/Loading";
+import TableActions from "../../shared/TableActions/TableActions";
 
 
 export default function TasksList() {
@@ -39,7 +40,7 @@ export default function TasksList() {
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         toast.error(
-          error.response?.data?.message || "🦄 Something went wrong!"
+          error.response?.data?.message || " Something went wrong!"
         );
       } else {
         toast.error("An unexpected error occurred!");
@@ -115,7 +116,7 @@ export default function TasksList() {
               className="taskInput searchInput"
               style={{
                 borderRadius: "2rem",
-                paddingLeft: "2.5rem", // علشان نعمل space بين الأيقونة والنص
+                paddingLeft: "2.5rem", 
               }}
             />
             <i
@@ -124,7 +125,7 @@ export default function TasksList() {
                 left: "10px",
                 top: "50%",
                 transform: "translateY(-50%)",
-                pointerEvents: "none", // علشان الأيقونة متأثرش على الكتابة
+                pointerEvents: "none", 
               }}
             ></i>
           </div>
@@ -176,7 +177,6 @@ export default function TasksList() {
                         {task?.status}
                       </div>
                     </td>
-
                     <td>{task?.project?.title}</td>
                     <td>
                       {new Date(task?.creationDate).toLocaleString("en-GB", {
@@ -189,35 +189,12 @@ export default function TasksList() {
                       })}
                     </td>
                     <td>
-                      <Dropdown style={{ borderRadius: "3rem" }}>
-                        <Dropdown.Toggle
-                          className="bg-transparent border-0"
-                          id="dropdown-basic"
-                        >
-                          <i className="fa fa-ellipsis-v textContent"></i>
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                          <Dropdown.Item className="textContent">
-                            <i className="fa fa-eye mx-2"></i>View
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            className="textContent"
-                            onClick={() =>
-                              handleDeleteClick(task?.id, task?.title)
-                            }
-                          >
-                            <i className="fa fa-trash mx-2"></i>Delete
-                          </Dropdown.Item>
-                          <Dropdown.Item className="textContent">
-                            <Link
-                              className="text-decoration-none textContent"
-                              to={`/dashboard/tasks/${task?.id}`}
-                            >
-                              <i className="fa fa-edit mx-2"></i>Edit
-                            </Link>
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
+                      <TableActions
+                        itemID={task.id}
+                        itemName="View"
+                        role="Manager"
+                        onDelete={handleDeleteClick}
+                      />
                     </td>
                   </tr>
                 ))
