@@ -10,5 +10,6 @@ export default function Loading() {
         Loading...
       </span>
     </div>
+
   )
 }

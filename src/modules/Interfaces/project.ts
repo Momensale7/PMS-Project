@@ -28,6 +28,8 @@ export interface ProjectResponse {
     data: Project[];
     totalProjects: number;
     totalPages: number;
+    totalNumberOfRecords: number;
+
   }
   export interface DeleteConfirmationProps {
     handleClose: () => void;

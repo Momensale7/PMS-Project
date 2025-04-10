@@ -20,6 +20,7 @@
     --contentBg: #fff
     --dark-text-color:#4F4F4F;
     --dark-board-bg:rgba(49, 89, 91,0.9) ;
+    --dark-pagnaition-color:gray;
     
 }
 :root[theme="dark"]{
@@ -30,8 +31,8 @@
     --contentBg:#508659;
     --dark-text-color:#FFF;
     --dark-board-bg:#a5cab1;
-
-
+    --dark-pagnaition-color:rgb(224, 209, 209);
+    --bs-btn-border-color:#fff !important;
 }
 .nav{
     background-color: var(--dark-body);
@@ -49,9 +50,16 @@
 .dark-Board-bg{
     background-color: var(--dark-board-bg);
 }
+.dark-pagnaition-color{
+    color: var(--dark-pagnaition-color);
+}
 .dark-text{
  color: var(--dark-text-color) ;
 }
+
+.border-color {
+    border-color: var(--dark-pagnaition-color) !important;
+} 
 /* Utitites */
 .header-bg{
     background-image: url('./assets/images/home-bg.png');
