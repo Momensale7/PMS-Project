@@ -14,6 +14,7 @@ import { Authcontext } from "../../AuthContext/AuthContext";
 import TasksBoard from "../../EmployeeTasks/TasksBoard";
 import Pagination from "../../shared/Pagination/Pagination";
 
+
 export default function TasksList() {
   const authContext = useContext(Authcontext);
   const role = authContext?.role;
@@ -44,7 +45,7 @@ export default function TasksList() {
         }
       );
       setTasks(response?.data?.data);
-      setTotalTasks(response?.data?.totalNumberOfRecords); // ← عدد المهام الكلي
+      setTotalTasks(response?.data?.totalNumberOfRecords); 
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         toast.error(error.response?.data?.message || " Something went wrong!");

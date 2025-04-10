@@ -17,4 +17,5 @@ export interface TaskResponse {
   data: Task[];
   totalTasks: number;
   totalPages: number;
+  totalNumberOfRecords: number;
 }
