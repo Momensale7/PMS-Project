@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { Form, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Task, TaskResponse } from "../../Interfaces/Task";
@@ -10,9 +10,13 @@ import axios from "axios";
 import NoData from "../../shared/NoData/NoData";
 import Loading from "../../shared/Loading/Loading";
 import TableActions from "../../shared/TableActions/TableActions";
+import { Authcontext } from '../../AuthContext/AuthContext'
+import TasksBoard from '../../EmployeeTasks/TasksBoard'
 
 
 export default function TasksList() {
+  const authContext = useContext(Authcontext)
+  const role = authContext?.role
   const [tasks, setTasks] = useState<Task[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [pageNumber, setPageNumber] = useState<number>(1);
@@ -96,6 +100,8 @@ export default function TasksList() {
         message={`Are you sure that you want to delete task ${itemToDeleteName}`}
         isDeleting={isDeleting}
       />
+<>
+{role === 'Employee' ? <TasksBoard/> : 
       <div className="tasks">
         <div className="bg-white d-flex align-items-center justify-content-between py-3 px-4 mb-3">
           <h3 className="h3 textMaster fw-medium">Tasks</h3>
@@ -191,8 +197,7 @@ export default function TasksList() {
                     <td>
                       <TableActions
                         itemID={task.id}
-                        itemName="View"
-                        role="Manager"
+                        role={role}
                         onDelete={handleDeleteClick}
                       />
                     </td>
@@ -209,18 +214,8 @@ export default function TasksList() {
           </Table>
         </div>
       </div>
+</>}
     </>
   );
-import React, { useContext } from 'react'
-import { Authcontext } from '../../AuthContext/AuthContext'
-import TasksBoard from '../../EmployeeTasks/TasksBoard'
 
-export default function TasksList() {
-  const authContext = useContext(Authcontext)
-  const role = authContext?.role
-  return (
-    <>
-    {role === 'Employee' ? <TasksBoard/> : <h1 className='text-center'>tasks list</h1>}
-    </>
-  )
-}
+
