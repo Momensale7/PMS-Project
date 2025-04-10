@@ -4,6 +4,7 @@ import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
 import { Link, NavLink } from "react-router-dom";
 import { menuItems, SideBarProps } from "../../Interfaces/layout";
 import { Authcontext } from "../../AuthContext/AuthContext";
+import ChangePass from "../../Authentication/ChangePass/ChangePass";
 
 
 
@@ -55,6 +56,7 @@ export default function SideBar({ collapsed, setCollapsed }: SideBarProps) {
           </Menu>
         </Sidebar>
       </div>
+      <ChangePass show={showchangePass} onClose={() => setShowChangePass(false)} />
     </>
   )
 }
