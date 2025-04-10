@@ -11,6 +11,7 @@ export const USER_URLS={
     GET_USERS:`/Users`,
     GET_USERS_COUNT:`/Users/count`,
     VERIFY:`/Users/Verify`,
+    TOGGLE_USER_STATUS: (id: string) => `/Users/${id}`,
 }
 
 export const PROJECT_URLS = {

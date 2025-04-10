@@ -102,19 +102,19 @@ export default function ProjectsList() {
         message={`are you sure that you want to delete project ${itemToDeleteName}`}
         isDeleting={isDeleting} />
       <div className='projects'>
-        <div className="bcox-dark-color d-flex align-items-center justify-content-between py-3 px-4 mb-3">
+        <div className="bcox-dark-color contentBg  d-flex align-items-center justify-content-between py-3 px-4 mb-3">
           <h3 className='h3 textMaster fw-medium'>Projects</h3>
           {role ==="Manager" && <Link className='btn bgMain btn-custom text-white' to={'/dashboard/projects/new-Project'}>
             <i className='fa fa-plus me-2'></i>
             Add New Project</Link>}
         </div>
-        <div className="ms-4 project cbox-dark-color pt-3 rounded-2">
+        <div className="ms-4 project contentBg cbox-dark-color pt-3 rounded-2">
           <div className="position-relative ms-4">
             <Form.Control
               onInput={handleTitleValue}
               type="search"
               placeholder="Search by Title"
-              className="projecInput searchInput w-200"
+              className="projecInput text-dark searchInput w-200"
             />
             <i className="fa fa-search position-absolute search text-gray-400"></i>
           </div>
