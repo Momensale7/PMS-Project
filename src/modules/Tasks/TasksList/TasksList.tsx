@@ -214,8 +214,10 @@ export default function TasksList() {
           </Table>
         </div>
       </div>
-</>}
+}
+</>
     </>
   );
+}
 
 
