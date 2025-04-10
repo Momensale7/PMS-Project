@@ -118,6 +118,9 @@ body {
     border-bottom: 0.3px solid #fff;
     border-radius: 0;
     color: #fff;
+    display: flex;
+    gap: 3rem;
+    
 }
 
 .form  .form-control:focus {
@@ -280,7 +283,6 @@ color: var(--main-color) ;
     margin-bottom: 10px;
 }
 
-** side bar */
 .sidebarContainer .logoLi {
     padding: 38px 50px 71px 0px;
     /* text-align: center; */
@@ -425,6 +427,7 @@ color: var(--main-color) ;
     padding-left: 30px !important;
 
 }
+
 
 
 /* *change pass */
