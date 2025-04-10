@@ -23,13 +23,13 @@ const Pagination: React.FC<PaginationProps> = ({
     const totalPages = Math.ceil(totalItems / pageSize);
 
     return (
-        <div className="d-flex justify-content-between align-items-center px-4 py-3">
+        <div className="d-flex justify-content-end align-items-center px-4 py-3">
             {/* Left - Show per page */}
-            <div className="d-flex align-items-center gap-2">
-                <span>Show:</span>
+            <div className="d-flex align-items-center gap-2" style={{ marginRight: "2rem" }}>
+                <span >Showing</span>
                 <select
                     className="form-select"
-                    style={{ width: "70px" }}
+                    style={{ width: "70px", padding: "0.2rem 1rem", borderRadius: "1rem",  cursor: "pointer" }}
                     value={pageSize}
                     onChange={(e) => onPageSizeChange(Number(e.target.value))}
                     >
@@ -43,6 +43,22 @@ const Pagination: React.FC<PaginationProps> = ({
 
         {/* Center - Arrows + page info */}
         <div className="d-flex align-items-center gap-3">
+            
+
+            <span className="d-flex align-items-center gap-2">
+
+                <div style={{color:"gray", marginRight:"1rem"}}> of <strong>{totalItems}</strong> {label}</div>
+
+                <span style={{ color: "gray" }}>
+                    Page <strong>{pageNumber}</strong> of <strong>{totalPages}</strong>
+                </span>
+
+                <span>
+                    
+                </span>
+            </span>
+
+
             <button
                 className="btn btn-outline-secondary btn-sm"
                 onClick={handlePrev}
@@ -50,17 +66,6 @@ const Pagination: React.FC<PaginationProps> = ({
             >
                 <FaArrowLeft />
             </button>
-
-            <span>
-            Page <strong>{pageNumber}{totalPages}</strong> |
-            Showing <strong>{(pageNumber - 1) * pageSize + 1}</strong> to{" "}
-            <strong>
-                {pageNumber * pageSize > totalItems
-                ? totalItems
-                : pageNumber * pageSize}
-            </strong>
-            of <strong>{totalItems}</strong> {label}
-            </span>
 
             <button
             className="btn btn-outline-secondary btn-sm"
