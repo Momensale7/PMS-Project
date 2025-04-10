@@ -23,6 +23,9 @@ export const PROJECT_URLS = {
   };
   export const TASK_URLS = {
     GET_ALL_MY_ASSIGNED_TASKS: '/Task',
-    CHANGE_TASK_STATUS:(id:number)=>`/Task/${id}/change-status`
+    CHANGE_TASK_STATUS:(id:number)=>`/Task/${id}/change-status`,
+    GET_TASK_FOR_MANGER:(pageSize=1,pageNumber=1)=>`/Task/manager?pageSize=${pageSize}&pageNumber=${pageNumber}`,
+    GET_PROJECT_FOR_MANGER:(pageSize=1,pageNumber=1)=>`/Project/manager?pageSize=${pageSize}&pageNumber=${pageNumber}`,
+
   };
   

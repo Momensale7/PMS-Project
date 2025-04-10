@@ -7,7 +7,7 @@ interface userCountInterface {
     activatedEmployeeCount: number;
     deactivatedEmployeeCount: number;
   }
-const UserStatistics = () => {
+const UserStatistics = ({role}:{role:string}) => {
       const [userData, setUserData] = React.useState<userCountInterface | null>(null);
     
 
@@ -22,7 +22,10 @@ const UserStatistics = () => {
     };
   
        useEffect(() => {
+        
+        if(role==="Employee"){
           getUserCount();
+        }
          
     
         }, []);
