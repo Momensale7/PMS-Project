@@ -103,8 +103,8 @@ export default function ProjectsList() {
         isDeleting={isDeleting} />
       <div className='projects'>
         <div className="bcox-dark-color d-flex align-items-center justify-content-between py-3 px-4 mb-3">
-          <h3 className='h3 textMaster fw-medium'>Projects</h3>
-          {role ==="Manager" && <Link className='btn bgMain btn-custom text-white' to={'/dashboard/projects/new-Project'}>
+          <h3 className='h3  fw-medium dark-text'>Projects</h3>
+          {role ==="Manager" && <Link className='btn bgMain btn-custom dark-text' to={'/dashboard/projects/new-Project'}>
             <i className='fa fa-plus me-2'></i>
             Add New Project</Link>}
         </div>

@@ -17,18 +17,22 @@
     --nav-dark:#FFF;
     --nav-text-dark:black;
     --dark-card-color:#F8F9FB;
-
+    --dark-text-color:#4F4F4F;
+    --dark-board-bg:rgba(49, 89, 91,0.9) ;
+    
 }
 :root[theme="dark"]{
     --dark-body:#68946f;
     --nav-dark:#508659;
     --nav-text-dark:#fff ;
     --dark-card-color:#dffae8;
+    --dark-text-color:#FFF;
+    --dark-board-bg:#a5cab1;
 
 
 }
 .nav{
-    background-color: var(--nav-dark);
+    background-color: var(--dark-body);
 }
 .nav-link {
     color: var(--nav-text-dark) !important;
@@ -36,6 +40,15 @@
 }
 .dark-bg{
  background-color: var(--dark-body);
+}
+.dark-card-bg{
+ background-color: var(--dark-card-color);
+}
+.dark-Board-bg{
+    background-color: var(--dark-board-bg);
+}
+.dark-text{
+ color: var(--dark-text-color) ;
 }
 /* Utitites */
 .header-bg{
@@ -74,7 +87,6 @@
 
 /* *general stayling */
 body {
-    /* background-color: #F5F5F5; */
     background-color: var(--dark-body);
 }
 .bgBoard{
@@ -281,6 +293,7 @@ color: var(--main-color) ;
     top: 0;
     left: 0;
     transition: all 0.3s ;
+    background-color: var(--dark-body);
   }
   .sidebarCollapsed {
     width: 80px; /* Collapsed width */
