@@ -54,7 +54,8 @@ function App() {
   return (
     <>
 
-
+    <RouterProvider router={routes} />
+    {/* Toastify Container */}
     <ToastContainer
     position="top-right"
     autoClose={5000}

@@ -45,7 +45,7 @@ export default function TasksList() {
         }
       );
       setTasks(response?.data?.data);
-      setTotalTasks(response?.data?.totalNumberOfRecords); 
+      setTotalTasks(response?.data?.totalNumberOfRecords);
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         toast.error(error.response?.data?.message || " Something went wrong!");
@@ -85,7 +85,7 @@ export default function TasksList() {
 
   const handleTitleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
-    setPageNumber(1); 
+    setPageNumber(1);
   };
 
   const handleNext = () => {
@@ -103,7 +103,7 @@ export default function TasksList() {
 
   const handlePageSizeChange = (newSize: number) => {
     setPageSize(newSize);
-    setPageNumber(1); 
+    setPageNumber(1);
   };
 
   useEffect(() => {
@@ -178,7 +178,11 @@ export default function TasksList() {
                 </thead>
                 <tbody>
                   {isLoading ? (
-                    <Loading />
+                    <tr>
+                      <td colSpan={6} className="text-center">
+                        <Loading />
+                      </td>
+                    </tr>
                   ) : tasks.length > 0 ? (
                     tasks.map((task, index) => (
                       <tr key={index}>
@@ -191,10 +195,10 @@ export default function TasksList() {
                                 task.status === "ToDo"
                                   ? "#E4E1F5"
                                   : task.status === "InProgress"
-                                  ? "#EF9B28A3"
-                                  : task.status === "Done"
-                                  ? "#009247"
-                                  : "#ccc",
+                                    ? "#EF9B28A3"
+                                    : task.status === "Done"
+                                      ? "#009247"
+                                      : "#ccc",
                               color: task.status === "Done" ? "#fff" : "#000",
                               fontWeight: "500",
                               padding: "8px 30px",

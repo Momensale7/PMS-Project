@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { Badge, Container, Dropdown, Form, Pagination, Row, Table } from "react-bootstrap";
+import { Badge, Container, Dropdown, Form, Row, Table } from "react-bootstrap";
 import axios from "axios";
 import { privateAxiosInstance } from "../../services/api/apiInstance.ts";
 import { USER_URLS } from "../../services/api/apiConfig.ts";
 import { UserList, UserListResponse } from "../../Interfaces/User.ts";
 import { format } from "date-fns";
 import { toast } from "react-toastify";
+import NoData from "../../shared/NoData/NoData.tsx";
+import Loading from "../../shared/Loading/Loading.tsx";
 
 export default function UsersList() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -102,8 +104,6 @@ export default function UsersList() {
 
       <div className="ms-4 project contentBg cbox-dark-color pt-3 rounded-2">
         <Container>
-
-        
         <Row className=" g-2 ">
         <div className="position-relative  col-lg-3 col-sm-6 col-12 ">
           <Form.Control
@@ -161,14 +161,7 @@ export default function UsersList() {
             {isLoading ? (
               <tr>
                 <td colSpan={8} className="text-center">
-                  <div
-                    className="spinner-border text-success"
-                    role="status"
-                  >
-                    <span className="visually-hidden">
-                      Loading...
-                    </span>
-                  </div>
+                  <Loading/>
                 </td>
               </tr>
             ) : users.length ? (
@@ -224,17 +217,7 @@ export default function UsersList() {
             ) : (
               <tr>
                 <td className="text-center" colSpan={6}>
-                  <div>
-                    <div className="text-center">
-                      <img
-                        className="w-25"
-                        src=""
-                        alt="no data"
-                      />
-                      <h4>No Data</h4>
-                      <p>No data available</p>
-                    </div>
-                  </div>
+                  <NoData/>
                 </td>
               </tr>
             )}
