@@ -44,7 +44,9 @@ export default function TasksList() {
         }
       );
       setTasks(response?.data?.data);
+
       setTotalPages(response?.data?.totalNumberOfRecords); 
+
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         toast.error(error.response?.data?.message || " Something went wrong!");
@@ -82,7 +84,7 @@ export default function TasksList() {
     setDeleteModalshow(true);
   };
 
-  
+
   useEffect(() => {
     getTasks();
   }, [title, pageNumber, pageSize]);
@@ -155,8 +157,12 @@ export default function TasksList() {
                 </thead>
                 <tbody>
                   {isLoading ? (
-                   <tr>
-                    <td colSpan={6}><Loading /></td>
+
+                    <tr>
+                      <td colSpan={6} className="text-center">
+                        <Loading />
+                      </td>
+
                     </tr>
                   ) : tasks.length > 0 ? (
                     tasks.map((task, index) => (
@@ -170,10 +176,10 @@ export default function TasksList() {
                                 task.status === "ToDo"
                                   ? "#E4E1F5"
                                   : task.status === "InProgress"
-                                  ? "#EF9B28A3"
-                                  : task.status === "Done"
-                                  ? "#009247"
-                                  : "#ccc",
+                                    ? "#EF9B28A3"
+                                    : task.status === "Done"
+                                      ? "#009247"
+                                      : "#ccc",
                               color: task.status === "Done" ? "#fff" : "#000",
                               fontWeight: "500",
                               padding: "8px 30px",

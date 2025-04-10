@@ -34,13 +34,14 @@ export default function ProjectsList() {
     try {
       const response = role === 'Manager'
         ? await privateAxiosInstance.get<ProjectResponse>(PROJECT_URLS.GET_PROJECTS_BY_MANAGER, {
-            params: {
-              title,
-              pageNumber,
-              pageSize
-            }
-          })
+          params: {
+            title,
+            pageNumber,
+            pageSize
+          }
+        })
         : await privateAxiosInstance.get<ProjectResponse>(PROJECT_URLS.GET_PROJECTS_BY_EMPLOYEE, {
+
             params: {
               title,
               pageNumber,
@@ -100,23 +101,24 @@ export default function ProjectsList() {
         message={`are you sure that you want to delete project ${itemToDeleteName}`}
         isDeleting={isDeleting} />
       <div className='projects'>
-        <div className="bcox-dark-color d-flex align-items-center justify-content-between py-3 px-4 mb-3">
-          <h3 className='h3  fw-medium dark-text'>Projects</h3>
-          {role ==="Manager" && <Link className='btn bgMain btn-custom dark-text' to={'/dashboard/projects/new-Project'}>
+        <div className="bcox-dark-color contentBg  d-flex align-items-center justify-content-between py-3 px-4 mb-3">
+          <h3 className='h3 textMaster fw-medium'>Projects</h3>
+          {role === "Manager" && <Link className='btn bgMain btn-custom text-white' to={'/dashboard/projects/new-Project'}>
+
             <i className='fa fa-plus me-2'></i>
             Add New Project</Link>}
         </div>
-        <div className="ms-4 project cbox-dark-color pt-3 rounded-2">
+        <div className="ms-4 project contentBg cbox-dark-color pt-3 rounded-2">
           <div className="position-relative ms-4">
             <Form.Control
               onInput={handleTitleValue}
               type="search"
               placeholder="Search by Title"
-              className="projecInput searchInput w-200"
+              className="projecInput text-dark searchInput w-200"
             />
             <i className="fa fa-search position-absolute search text-gray-400"></i>
           </div>
-          <Table  responsive striped bordered hover className='mt-3 '>
+          <Table responsive striped bordered hover className='mt-3 '>
             <thead>
               <tr>
                 <th>#</th>
@@ -128,7 +130,13 @@ export default function ProjectsList() {
               </tr>
             </thead>
             <tbody>
-              {isLoading ? <tr><td colSpan={6}><Loading /></td></tr>: projects.length > 0 ? projects?.map((project, index) => (
+
+              {isLoading ? <tr>
+                <td colSpan={6} className="text-center">
+                  <Loading />
+                </td>
+              </tr> : projects.length > 0 ? projects?.map((project, index) => (
+
                 <tr key={index}>
                   <td>{project?.id}</td>
                   <td>{project?.title}</td>
@@ -138,13 +146,13 @@ export default function ProjectsList() {
                   })}</td>
                   <td>{project?.task?.map(task => task?.title).join(', ')}</td>
                   <td>
-                    <TableActions 
+                    <TableActions
                       itemID={project?.id}
                       itemName={project?.title}
                       role={role}
                       onDelete={handleDeleteClick}
                     />
-                   
+
                   </td>
                 </tr>
               )) : <tr><td colSpan={6}><NoData /></td></tr>}

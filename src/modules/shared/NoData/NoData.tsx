@@ -6,8 +6,8 @@ const NoData = () => {
         <div>
             <img src={noDataImg } className='w-75' alt="" />
         </div>
-        <h5 className='w-100 pt-3'>No Data !</h5>
-        <p className='text-muted w-75 px-3'>are you sure you want to delete this item ? if you are sure just click on delete it</p>
+        <h5 className='w-100 pt-3 text-center'>No Data !</h5>
+        <p className='text-muted w-75 px-3 text-center'>are you sure you want to delete this item ? if you are sure just click on delete it</p>
     </div>
   )
 }
