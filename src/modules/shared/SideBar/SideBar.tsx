@@ -4,6 +4,7 @@ import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
 import { Link, NavLink } from "react-router-dom";
 import { menuItems, SideBarProps } from "../../Interfaces/layout";
 import { Authcontext } from "../../AuthContext/AuthContext";
+import ChangePass from "../../Authentication/ChangePass/ChangePass";
 
 
 
@@ -31,7 +32,7 @@ export default function SideBar({ collapsed, setCollapsed }: SideBarProps) {
     <>
       <div className="sidebarContainer  ">
         <Sidebar collapsed={collapsed} className='' >
-          <div className="d-flex justify-content-end">
+          <div className="d-flex justify-content-end ">
             <Button
               className={`${collapsed ? 'btnCollapsed' : ''} btn btn-sm d-flex align-items-center justify-content-center bgMain my-3 btnToggle text-white`}
               onClick={toggleCollapse}
@@ -55,6 +56,7 @@ export default function SideBar({ collapsed, setCollapsed }: SideBarProps) {
           </Menu>
         </Sidebar>
       </div>
+      <ChangePass show={showchangePass} onClose={() => setShowChangePass(false)} />
     </>
   )
 }

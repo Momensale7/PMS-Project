@@ -17,18 +17,22 @@
     --nav-dark:#FFF;
     --nav-text-dark:black;
     --dark-card-color:#F8F9FB;
-
+    --dark-text-color:#4F4F4F;
+    --dark-board-bg:rgba(49, 89, 91,0.9) ;
+    
 }
 :root[theme="dark"]{
     --dark-body:#68946f;
     --nav-dark:#508659;
     --nav-text-dark:#fff ;
     --dark-card-color:#dffae8;
+    --dark-text-color:#FFF;
+    --dark-board-bg:#a5cab1;
 
 
 }
 .nav{
-    background-color: var(--nav-dark);
+    background-color: var(--dark-body);
 }
 .nav-link {
     color: var(--nav-text-dark) !important;
@@ -36,6 +40,15 @@
 }
 .dark-bg{
  background-color: var(--dark-body);
+}
+.dark-card-bg{
+ background-color: var(--dark-card-color);
+}
+.dark-Board-bg{
+    background-color: var(--dark-board-bg);
+}
+.dark-text{
+ color: var(--dark-text-color) ;
 }
 /* Utitites */
 .header-bg{
@@ -74,7 +87,6 @@
 
 /* *general stayling */
 body {
-    /* background-color: #F5F5F5; */
     background-color: var(--dark-body);
 }
 .bgBoard{
@@ -89,6 +101,9 @@ body {
 }
 .textContent{
     color: #0E382F;
+}
+.bgMainColor{
+    background: #0E382F;
 }
 .pointer{
     cursor: pointer;
@@ -280,6 +295,7 @@ color: var(--main-color) ;
     top: 0;
     left: 0;
     transition: all 0.3s ;
+    background-color: var(--dark-body);
   }
   .sidebarCollapsed {
     width: 80px; /* Collapsed width */
@@ -412,12 +428,62 @@ color: var(--main-color) ;
 
 }
 
-.dropdown-menu.show{
-    border-radius: 1.5rem;
-    border: none;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+
+
+/* *change pass */
+.changePassModal .modal-content{
+   border: 0px;
+}
+/* ChangePass.css */
+
+.changePassModal .bottom-border-only {
+    background-color: transparent !important;
+  }
+  
+ .changePassModal  .bottom-border-only .form-control {
+    background-color: transparent;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+ .changePassModal  .bottom-border-only .form-control:focus {
+    box-shadow: none;
+    border-color: transparent;
+  }
+  
+.changePassModal   .bottom-border-only:focus-within {
+    border-bottom: 2px solid #198754 !important; /* Using bootstrap success color */
+    box-shadow: none;
+  }
+  
+  .changePassModal .form-control.is-invalid {
+    background-image: none;
+    border-color: transparent;
+    box-shadow: none;
+  }
+  
+  .changePassModal .form-control.is-invalid:focus {
+    box-shadow: none;
+  }
+  
+  .changePassModal .modal-content  {
+    border-radius: 20px;
+    background-color: #0E382F;
+    overflow: hidden;
+  }
+  
+  
+  
+  .changePassForm .form-control::placeholder {
+    color: #fff;
+  }
+ 
+  .changePassForm .form-control {
+    color: #fff; 
 }
 
+.btn:hover{
+    background-color: transparent;
+}
 /* Not found page */
 .not-found{
     background-image: url('../src/assets/notFoundbg.png');
@@ -446,6 +512,7 @@ color: var(--main-color) ;
 .dropdown-menu[data-bs-popper] {
     right: 0 !important;
     left: auto;
+
 }
 .boardContainer{
     min-height: 300px;
