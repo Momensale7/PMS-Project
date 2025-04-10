@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react'
-import { Dropdown, Form, Table } from 'react-bootstrap'
+import { Dropdown, Form,  Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Project, ProjectResponse } from '../../Interfaces/project';
 import { privateAxiosInstance } from '../../services/api/apiInstance';
@@ -12,20 +12,20 @@ import NoData from '../../shared/NoData/NoData';
 import Loading from '../../shared/Loading/Loading';
 import { Authcontext } from '../../AuthContext/AuthContext';
 import TableActions from '../../shared/TableActions/TableActions';
+import Pagination from "../../shared/Pagination/Pagination";
+import usePagination from '../../hooks/usePagination';
 
 export default function ProjectsList() {
+  const{title, pageNumber, pageSize,totalPages,handleTitleValue,handleNext,handlePrev,handlePageSizeChange ,setTotalPages}=usePagination()
   const authContext = useContext(Authcontext)
   const role = authContext?.role
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [pageNumber, setPageNumber] = useState<number>(1);
-  const [pageSize] = useState<number>(8);
-  const [totalPages, setTotalPages] = useState<number>(1);
+
   const [itemToDelete, setItemToDelete] = useState<number>(NaN);
   const [itemToDeleteName, setItemToDeleteName] = useState<string | null>(null);
   const [deleteModalshow, setDeleteModalshow] = useState<boolean>(false);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
-  const [title, setTitle] = useState<string>("");
 
 
   // * get projects list
@@ -47,7 +47,8 @@ export default function ProjectsList() {
               pageSize
             }
           });
-      setProjects(response?.data?.data)
+          setProjects(response?.data?.data)
+          setTotalPages(response?.data?.totalNumberOfRecords)
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         toast.error(error.response?.data?.message || '🦄 Something went wrong!');
@@ -84,14 +85,11 @@ export default function ProjectsList() {
   }
 
   // *search
-  const handleTitleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-    setPageNumber(1);
-  };
+
+  
   useEffect(() => {
     getProjects();
-  }, [title])
-
+  }, [title, pageNumber, pageSize]);
 
   return (
     <>
@@ -130,7 +128,7 @@ export default function ProjectsList() {
               </tr>
             </thead>
             <tbody>
-              {isLoading ? <Loading /> : projects.length > 0 ? projects?.map((project, index) => (
+              {isLoading ? <tr><td colSpan={6}><Loading /></td></tr>: projects.length > 0 ? projects?.map((project, index) => (
                 <tr key={index}>
                   <td>{project?.id}</td>
                   <td>{project?.title}</td>
@@ -152,6 +150,15 @@ export default function ProjectsList() {
               )) : <tr><td colSpan={6}><NoData /></td></tr>}
             </tbody>
           </Table>
+             <Pagination
+                          pageNumber={pageNumber}
+                          pageSize={pageSize}
+                          totalItems={totalPages}
+                          onPageSizeChange={handlePageSizeChange}
+                          label="Tasks"
+                          handleNext={handleNext}
+                          handlePrev={handlePrev}
+                        />
         </div>
       </div>
     </>
