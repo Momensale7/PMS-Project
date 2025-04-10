@@ -10,7 +10,7 @@ export default function NavBar() {
     const authContext = useContext(Authcontext);
     const loginData  = authContext?.loginData;
   return (
-    <Navbar expand="lg" className="bg-white nav ">
+    <Navbar expand="lg" className=" nav ">
 
       <Navbar.Brand className='py-0' >
         <img src={navLogo} alt="" />
@@ -27,8 +27,8 @@ export default function NavBar() {
             <a className="nav-link fs-12 my-0 py-0 text-dark-main" aria-current="page" >{loginData?.userEmail}</a>
             </div>
           </Nav.Link>
-          <NavDropdown title="" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+          <NavDropdown   title="" id="basic-nav-dropdown " >
+            <NavDropdown.Item   href="#action/3.1">Action</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

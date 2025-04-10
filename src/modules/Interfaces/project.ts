@@ -1,5 +1,5 @@
 interface task {
-    name:string;
+    title:string;
 }
 export interface Project {
     id: number;
@@ -7,7 +7,7 @@ export interface Project {
     description: string;
     creationDate: string;
     modificationDate: string;
-    tasks:task[];
+    task:task[];
   }
   export interface ProjectUpdate {
     message: string | undefined;

@@ -30,3 +30,8 @@ export const PROJECT_URLS = {
     DELETE_TASKS: (id: number) => `/Task/${id}`,
     GET_TASKS: (id: string | undefined) => `/Task/${id}`,
   };
+  export const TASK_URLS = {
+    GET_ALL_MY_ASSIGNED_TASKS: '/Task',
+    CHANGE_TASK_STATUS:(id:number)=>`/Task/${id}/change-status`
+  };
+  

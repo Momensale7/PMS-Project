@@ -32,14 +32,21 @@ export default function ProjectsList() {
   const getProjects = async (): Promise<void> => {
     setIsLoading(true)
     try {
-      const response = await privateAxiosInstance.get<ProjectResponse>(PROJECT_URLS.GET_PROJECTS_BY_MANAGER, {
-        params: {
-          title,
-          pageNumber,
-          pageSize
-        }
-
-      });
+      const response = role === 'Manager'
+        ? await privateAxiosInstance.get<ProjectResponse>(PROJECT_URLS.GET_PROJECTS_BY_MANAGER, {
+            params: {
+              title,
+              pageNumber,
+              pageSize
+            }
+          })
+        : await privateAxiosInstance.get<ProjectResponse>(PROJECT_URLS.GET_PROJECTS_BY_EMPLOYEE, {
+            params: {
+              title,
+              pageNumber,
+              pageSize
+            }
+          });
       setProjects(response?.data?.data)
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -86,8 +93,6 @@ export default function ProjectsList() {
   }, [title])
 
 
-
-
   return (
     <>
       <DeleteConfirmation
@@ -97,13 +102,13 @@ export default function ProjectsList() {
         message={`are you sure that you want to delete project ${itemToDeleteName}`}
         isDeleting={isDeleting} />
       <div className='projects'>
-        <div className="bg-white d-flex align-items-center justify-content-between py-3 px-4 mb-3">
+        <div className="bcox-dark-color d-flex align-items-center justify-content-between py-3 px-4 mb-3">
           <h3 className='h3 textMaster fw-medium'>Projects</h3>
           {role ==="Manager" && <Link className='btn bgMain btn-custom text-white' to={'/dashboard/projects/new-Project'}>
             <i className='fa fa-plus me-2'></i>
             Add New Project</Link>}
         </div>
-        <div className="ms-4 project bg-white pt-3 rounded-2">
+        <div className="ms-4 project cbox-dark-color pt-3 rounded-2">
           <div className="position-relative ms-4">
             <Form.Control
               onInput={handleTitleValue}
@@ -113,7 +118,7 @@ export default function ProjectsList() {
             />
             <i className="fa fa-search position-absolute search text-gray-400"></i>
           </div>
-          <Table responsive striped bordered hover className='mt-3'>
+          <Table  responsive striped bordered hover className='mt-3 '>
             <thead>
               <tr>
                 <th>#</th>
@@ -133,7 +138,7 @@ export default function ProjectsList() {
                   <td>{new Date(project?.creationDate).toLocaleString('en-GB', {
                     day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true
                   })}</td>
-                  <td>{project?.tasks?.map(task => task?.name).join(', ')}</td>
+                  <td>{project?.task?.map(task => task?.title).join(', ')}</td>
                   <td>
                     <TableActions 
                       itemID={project?.id}

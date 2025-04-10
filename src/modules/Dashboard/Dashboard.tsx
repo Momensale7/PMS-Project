@@ -6,7 +6,7 @@ import ProgressChart from '../shared/ProgressChart/ProgressChart';
 export default function Dashboard() {
   
   return (
-    <div className="container-fluid bg-dashboard-body">
+    <div className="dark-bg container-fluid ">
       <div className="font-monospace rounded-4 d-flex flex-column justify-content-center header-bg text-white px-2 py-5 lh-lg">
         <h3>
           Welcome <span className="main-color">Upskilling</span>
