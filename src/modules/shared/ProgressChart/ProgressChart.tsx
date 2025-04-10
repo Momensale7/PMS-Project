@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
 import DoughnutChart from '../DoughnutChart/Doughnut Chart';
 import { privateAxiosInstance } from '../../services/api/apiInstance';
-
 
 interface progressCountInterface {
     done: number;
@@ -10,7 +9,7 @@ interface progressCountInterface {
 }
 
 const ProgressChart = () => {
-    const [progressNumber, setProgressNumber] = React.useState<progressCountInterface>({
+    const [progressNumber, setProgressNumber] = useState<progressCountInterface>({
         done: 0,
         inProgress: 0,
         toDo: 0,
@@ -25,9 +24,17 @@ const ProgressChart = () => {
             console.log(error);
         }
     };
+
     useEffect(() => {
         getProgressCount();
     }, []);
+
+    const allZero = progressNumber.done === 0 &&
+                    progressNumber.inProgress === 0 &&
+                    progressNumber.toDo === 0;
+
+    if (allZero) return null;
+
     return (
         <div className="box-dark-color py-3 bg-dashboard-light rounded-2">
             <div className="card-left-line px-5">
@@ -38,12 +45,16 @@ const ProgressChart = () => {
                 <div className="col-12">
                     <DoughnutChart
                         labels={['Done', 'In Progress', 'To Do']}
-                        chartData={[progressNumber?.done, progressNumber?.inProgress, progressNumber?.toDo]}
+                        chartData={[
+                            progressNumber.done,
+                            progressNumber.inProgress,
+                            progressNumber.toDo
+                        ]}
                     />
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ProgressChart
+export default ProgressChart;

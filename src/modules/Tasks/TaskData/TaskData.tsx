@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function TaskData() {
-  return (
-    <div>TaskData</div>
-  )
+const TaskData = () => {
+  return <div>TaskData</div>;
 }
+
+export default TaskData

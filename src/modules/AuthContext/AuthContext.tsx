@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext,  useEffect, useState } from 'react'
 import { jwtDecode } from 'jwt-decode';
 import { AuthContextProviderProps, AuthContextType, UserTokenPayload } from '../Interfaces/AuthInterfaces';
 
@@ -33,3 +33,4 @@ export default function AuthContextProvider({ children }: AuthContextProviderPro
         </Authcontext.Provider>
     );
 }
+

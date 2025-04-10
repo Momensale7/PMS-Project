@@ -11,7 +11,7 @@ export default function MasterLayout() {
     {/* Pass collapsed state and toggle function to Sidebar */}
     <SideBar collapsed={collapsed} setCollapsed={setCollapsed} />
     {/* Adjust mainContent margin dynamically */}
-    <div className={` mt-5 pt-3 mainContent ${collapsed ? 'collapsed' : ''}`}>
+    <div className={`dark-bg mt-5 pt-3 mainContent ${collapsed ? 'collapsed' : ''}`}>
       <Outlet />
     </div>
   </div>

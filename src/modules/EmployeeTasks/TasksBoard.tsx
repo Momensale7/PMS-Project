@@ -114,9 +114,9 @@ export default function TasksBoard() {
         return <Loading />;
     }
   return (
-    <div>
-          <div className="bg-white  py-3 px-4 mb-3">
-          <h3 className='h3 textMaster fw-medium'>Task Board</h3>
+         <div>
+          <div className="dark-text  py-3 px-4 mb-3">
+          <h3 className='h3 dark-text fw-medium'>Task Board</h3>
         </div>
         <div className="container">
         <DndContext
