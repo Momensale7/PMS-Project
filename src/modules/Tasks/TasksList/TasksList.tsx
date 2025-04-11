@@ -13,23 +13,22 @@ import TableActions from "../../shared/TableActions/TableActions";
 import { Authcontext } from "../../AuthContext/AuthContext";
 import TasksBoard from "../../EmployeeTasks/TasksBoard";
 import Pagination from "../../shared/Pagination/Pagination";
+import usePagination from "../../hooks/usePagination";
 
 
 export default function TasksList() {
+    const{title, pageNumber, pageSize,totalPages,handleTitleValue,handleNext,handlePrev,handlePageSizeChange ,setTotalPages}=usePagination()
+  
   const authContext = useContext(Authcontext);
   const role = authContext?.role;
 
   const [tasks, setTasks] = useState<Task[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [pageNumber, setPageNumber] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(8);
-  const [totalTasks, setTotalTasks] = useState<number>(0);
 
   const [itemToDelete, setItemToDelete] = useState<number>(NaN);
   const [itemToDeleteName, setItemToDeleteName] = useState<string | null>(null);
   const [deleteModalshow, setDeleteModalshow] = useState<boolean>(false);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
-  const [title, setTitle] = useState<string>("");
 
   const getTasks = async (): Promise<void> => {
     setIsLoading(true);
@@ -45,7 +44,9 @@ export default function TasksList() {
         }
       );
       setTasks(response?.data?.data);
-      setTotalTasks(response?.data?.totalNumberOfRecords); 
+
+      setTotalPages(response?.data?.totalNumberOfRecords); 
+
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         toast.error(error.response?.data?.message || " Something went wrong!");
@@ -83,28 +84,6 @@ export default function TasksList() {
     setDeleteModalshow(true);
   };
 
-  const handleTitleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-    setPageNumber(1); 
-  };
-
-  const handleNext = () => {
-    const totalPages = Math.ceil(totalTasks / pageSize);
-    if (pageNumber < totalPages) {
-      setPageNumber((prev) => prev + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (pageNumber > 1) {
-      setPageNumber((prev) => prev - 1);
-    }
-  };
-
-  const handlePageSizeChange = (newSize: number) => {
-    setPageSize(newSize);
-    setPageNumber(1); 
-  };
 
   useEffect(() => {
     getTasks();
@@ -124,8 +103,8 @@ export default function TasksList() {
           <TasksBoard />
         ) : (
           <div className="tasks">
-            <div className="bg-white d-flex align-items-center justify-content-between py-3 px-4 mb-3">
-              <h3 className="h3 textMaster fw-medium">Tasks</h3>
+            <div className=" d-flex align-items-center justify-content-between py-3 px-4 mb-3">
+              <h3 className="h3 dark-text fw-medium">Tasks</h3>
               <Link
                 className="btn bgMain btn-custom text-white"
                 to={"/dashboard/tasks/new-Task"}
@@ -135,7 +114,7 @@ export default function TasksList() {
               </Link>
             </div>
 
-            <div className="ms-4 task bg-white pt-3 rounded-2 ">
+            <div className="ms-4 task  pt-3 rounded-2 ">
               <div
                 className="position-relative ms-4"
                 style={{ width: "250px" }}
@@ -178,7 +157,13 @@ export default function TasksList() {
                 </thead>
                 <tbody>
                   {isLoading ? (
-                    <Loading />
+
+                    <tr>
+                      <td colSpan={6} className="text-center">
+                        <Loading />
+                      </td>
+
+                    </tr>
                   ) : tasks.length > 0 ? (
                     tasks.map((task, index) => (
                       <tr key={index}>
@@ -191,10 +176,10 @@ export default function TasksList() {
                                 task.status === "ToDo"
                                   ? "#E4E1F5"
                                   : task.status === "InProgress"
-                                  ? "#EF9B28A3"
-                                  : task.status === "Done"
-                                  ? "#009247"
-                                  : "#ccc",
+                                    ? "#EF9B28A3"
+                                    : task.status === "Done"
+                                      ? "#009247"
+                                      : "#ccc",
                               color: task.status === "Done" ? "#fff" : "#000",
                               fontWeight: "500",
                               padding: "8px 30px",
@@ -242,7 +227,7 @@ export default function TasksList() {
               <Pagination
                 pageNumber={pageNumber}
                 pageSize={pageSize}
-                totalItems={totalTasks}
+                totalItems={totalPages}
                 onPageSizeChange={handlePageSizeChange}
                 label="Tasks"
                 handleNext={handleNext}

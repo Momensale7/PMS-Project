@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react'
-import { Dropdown, Form, Table } from 'react-bootstrap'
+import { Dropdown, Form,  Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Project, ProjectResponse } from '../../Interfaces/project';
 import { privateAxiosInstance } from '../../services/api/apiInstance';
@@ -12,20 +12,20 @@ import NoData from '../../shared/NoData/NoData';
 import Loading from '../../shared/Loading/Loading';
 import { Authcontext } from '../../AuthContext/AuthContext';
 import TableActions from '../../shared/TableActions/TableActions';
+import Pagination from "../../shared/Pagination/Pagination";
+import usePagination from '../../hooks/usePagination';
 
 export default function ProjectsList() {
+  const{title, pageNumber, pageSize,totalPages,handleTitleValue,handleNext,handlePrev,handlePageSizeChange ,setTotalPages}=usePagination()
   const authContext = useContext(Authcontext)
   const role = authContext?.role
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [pageNumber, setPageNumber] = useState<number>(1);
-  const [pageSize] = useState<number>(8);
-  const [totalPages, setTotalPages] = useState<number>(1);
+
   const [itemToDelete, setItemToDelete] = useState<number>(NaN);
   const [itemToDeleteName, setItemToDeleteName] = useState<string | null>(null);
   const [deleteModalshow, setDeleteModalshow] = useState<boolean>(false);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
-  const [title, setTitle] = useState<string>("");
 
 
   // * get projects list
@@ -34,20 +34,22 @@ export default function ProjectsList() {
     try {
       const response = role === 'Manager'
         ? await privateAxiosInstance.get<ProjectResponse>(PROJECT_URLS.GET_PROJECTS_BY_MANAGER, {
-            params: {
-              title,
-              pageNumber,
-              pageSize
-            }
-          })
+          params: {
+            title,
+            pageNumber,
+            pageSize
+          }
+        })
         : await privateAxiosInstance.get<ProjectResponse>(PROJECT_URLS.GET_PROJECTS_BY_EMPLOYEE, {
+
             params: {
               title,
               pageNumber,
               pageSize
             }
           });
-      setProjects(response?.data?.data)
+          setProjects(response?.data?.data)
+          setTotalPages(response?.data?.totalNumberOfRecords)
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         toast.error(error.response?.data?.message || '🦄 Something went wrong!');
@@ -84,14 +86,11 @@ export default function ProjectsList() {
   }
 
   // *search
-  const handleTitleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-    setPageNumber(1);
-  };
+
+  
   useEffect(() => {
     getProjects();
-  }, [title])
-
+  }, [title, pageNumber, pageSize]);
 
   return (
     <>
@@ -102,23 +101,24 @@ export default function ProjectsList() {
         message={`are you sure that you want to delete project ${itemToDeleteName}`}
         isDeleting={isDeleting} />
       <div className='projects'>
-        <div className="bcox-dark-color d-flex align-items-center justify-content-between py-3 px-4 mb-3">
-          <h3 className='h3  fw-medium dark-text'>Projects</h3>
-          {role ==="Manager" && <Link className='btn bgMain btn-custom dark-text' to={'/dashboard/projects/new-Project'}>
+        <div className="bcox-dark-color contentBg  d-flex align-items-center justify-content-between py-3 px-4 mb-3">
+          <h3 className='h3 textMaster fw-medium'>Projects</h3>
+          {role === "Manager" && <Link className='btn bgMain btn-custom text-white' to={'/dashboard/projects/new-Project'}>
+
             <i className='fa fa-plus me-2'></i>
             Add New Project</Link>}
         </div>
-        <div className="ms-4 project cbox-dark-color pt-3 rounded-2">
+        <div className="ms-4 project contentBg cbox-dark-color pt-3 rounded-2">
           <div className="position-relative ms-4">
             <Form.Control
               onInput={handleTitleValue}
               type="search"
               placeholder="Search by Title"
-              className="projecInput searchInput w-200"
+              className="projecInput text-dark searchInput w-200"
             />
             <i className="fa fa-search position-absolute search text-gray-400"></i>
           </div>
-          <Table  responsive striped bordered hover className='mt-3 '>
+          <Table responsive striped bordered hover className='mt-3 '>
             <thead>
               <tr>
                 <th>#</th>
@@ -130,7 +130,13 @@ export default function ProjectsList() {
               </tr>
             </thead>
             <tbody>
-              {isLoading ? <Loading /> : projects.length > 0 ? projects?.map((project, index) => (
+
+              {isLoading ? <tr>
+                <td colSpan={6} className="text-center">
+                  <Loading />
+                </td>
+              </tr> : projects.length > 0 ? projects?.map((project, index) => (
+
                 <tr key={index}>
                   <td>{project?.id}</td>
                   <td>{project?.title}</td>
@@ -140,18 +146,27 @@ export default function ProjectsList() {
                   })}</td>
                   <td>{project?.task?.map(task => task?.title).join(', ')}</td>
                   <td>
-                    <TableActions 
+                    <TableActions
                       itemID={project?.id}
                       itemName={project?.title}
                       role={role}
                       onDelete={handleDeleteClick}
                     />
-                   
+
                   </td>
                 </tr>
               )) : <tr><td colSpan={6}><NoData /></td></tr>}
             </tbody>
           </Table>
+             <Pagination
+                          pageNumber={pageNumber}
+                          pageSize={pageSize}
+                          totalItems={totalPages}
+                          onPageSizeChange={handlePageSizeChange}
+                          label="Tasks"
+                          handleNext={handleNext}
+                          handlePrev={handlePrev}
+                        />
         </div>
       </div>
     </>

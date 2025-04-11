@@ -27,3 +27,16 @@ export interface DecodedToken {
     iat?: number;
     exp?: number;
 }
+export interface UserList {
+    id: string;
+    userName: string;
+    isActivated: boolean;
+    email: string;
+    phoneNumber: string;
+    creationDate: string;
+}
+export interface UserListResponse {
+   data: UserList[];
+   totalNumberOfPages: number;
+    totalNumberOfRecords: number;
+}
