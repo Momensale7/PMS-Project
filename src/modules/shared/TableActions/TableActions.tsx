@@ -6,10 +6,11 @@ export default function TableActions({
   itemName,
   role,
   onDelete,
+  handleView,
 }: TableActionsProps) {
   return (
     <Dropdown>
-      <Dropdown.Toggle className="bg-transparent border-0" id="dropdown-basic">
+      <Dropdown.Toggle onClick={handleView} className="bg-transparent border-0" id="dropdown-basic">
         <i className="fa fa-ellipsis-v textContent"></i>
       </Dropdown.Toggle>
       <Dropdown.Menu>
