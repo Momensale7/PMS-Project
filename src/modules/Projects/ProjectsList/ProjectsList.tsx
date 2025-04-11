@@ -89,8 +89,10 @@ export default function ProjectsList() {
 
   
   useEffect(() => {
-    getProjects();
-  }, [title, pageNumber, pageSize]);
+    if (role) {
+      getProjects();
+    }
+  }, [role, title, pageNumber, pageSize]);
 
   return (
     <>

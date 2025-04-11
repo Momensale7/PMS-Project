@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Badge, Container, Dropdown, Form, Row, Table } from "react-bootstrap";
 import axios from "axios";
 import { privateAxiosInstance } from "../../services/api/apiInstance.ts";
@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import { toast } from "react-toastify";
 import NoData from "../../shared/NoData/NoData.tsx";
 import Loading from "../../shared/Loading/Loading.tsx";
+import { Authcontext } from "../../AuthContext/AuthContext.tsx";
 
 export default function UsersList() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -20,6 +21,8 @@ export default function UsersList() {
   const [country, setCountry] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [groups, setGroups] = useState<string>("");
+   const authContext = useContext(Authcontext)
+    const role = authContext?.role
   const getUsers = async (): Promise<void> => {
     try {
       const response = await privateAxiosInstance.get<UserListResponse>(USER_URLS.GET_USERS, {
@@ -91,9 +94,10 @@ export default function UsersList() {
   }
 
   useEffect(() => {
-    getUsers();
-    // console.log(users[0].isActivated);
-  }, [pageNumber, pageSize,userName,email,country,groups]);
+    if (role) {
+      getUsers();
+    }
+  }, [role, pageNumber, pageSize, userName, email, country, groups]);
   return (
     <>
       <section className="contentBg">
