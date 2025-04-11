@@ -10,11 +10,11 @@ export default function TableActions({
 }: TableActionsProps) {
   return (
     <Dropdown>
-      <Dropdown.Toggle onClick={handleView} className="bg-transparent border-0" id="dropdown-basic">
+      <Dropdown.Toggle className="bg-transparent border-0" id="dropdown-basic">
         <i className="fa fa-ellipsis-v textContent"></i>
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item className="textContent">
+        <Dropdown.Item onClick={handleView} className="textContent">
           <i className="fa fa-eye mx-2"></i>
           view
         </Dropdown.Item>
