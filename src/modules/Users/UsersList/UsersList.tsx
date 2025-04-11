@@ -96,15 +96,15 @@ export default function UsersList() {
   }, [pageNumber, pageSize,userName,email,country,groups]);
   return (
     <>
-      <section className="bg-white">
-        <div className="bcox-dark-color contentBg  d-flex align-items-center justify-content-between py-3 px-4 mb-3">
+      <section className="contentBg">
+        <div className="bcox-dark-color d-flex align-items-center justify-content-between py-3 px-4 mb-3">
           <h3 className='h3 textMaster fw-medium'>Users</h3>
         </div>
       </section>
 
       <div className="ms-4 project contentBg cbox-dark-color pt-3 rounded-2">
         <Container>
-        <Row className=" g-2 ">
+        <Row className=" g-2 filterGroup ">
         <div className="position-relative  col-lg-3 col-sm-6 col-12 ">
           <Form.Control
             onInput={handleUserNameValue}
@@ -112,7 +112,7 @@ export default function UsersList() {
             placeholder="Search by Name"
             className="projecInput searchInput "
             />
-          <i className="fa fa-search position-absolute search text-gray-400"></i>
+          <i className="fa fa-search position-absolute search inputIcon"></i>
         </div>
         <div className="position-relative col-lg-3 col-sm-6 col-12">
           <Form.Control
@@ -121,7 +121,7 @@ export default function UsersList() {
             placeholder="Search by email"
             className="projecInput searchInput "
             />
-          <i className="fa fa-envelope position-absolute search text-gray-400"></i>
+          <i className="fa fa-envelope position-absolute search inputIcon"></i>
         </div>
         <div className="position-relative col-lg-3 col-sm-6 col-12">
           <Form.Control
@@ -130,7 +130,7 @@ export default function UsersList() {
             placeholder="Search by Country"
             className="projecInput searchInput "
             />
-          <i className="fa fa-globe position-absolute search text-gray-400"></i>
+          <i className="fa fa-globe position-absolute search inputIcon"></i>
           </div>
         <div className="position-relative col-lg-3 col-sm-6 col-12">
           <Form.Select
@@ -141,7 +141,7 @@ export default function UsersList() {
             <option value="1">Manager</option>
             <option value="2">Employee</option>
             </Form.Select>
-          <i className="fa fa-user position-absolute search text-gray-400"></i>
+          <i className="fa fa-user position-absolute search inputIcon"></i>
           </div>
         </Row>
         </Container>
