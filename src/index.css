@@ -287,13 +287,24 @@ body {
 }
 
 /* AuthLayout */
-.overlay {
+.overlay-left {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #314a59ce;
+    background-color: rgba(146, 46, 37, 0.7);
+    z-index: 1;
+}
+
+.overlay-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(239, 155, 40, 0.3); 
+    z-index: 1;
 }
 
 .img-full {
@@ -306,6 +317,8 @@ body {
     width: 100%;
     height: 100vh;
     background-color: #0E382F;
+    position: relative;
+    overflow: hidden;
 }
 
 .vector-rightImg {
@@ -318,11 +331,10 @@ body {
     background-repeat: no-repeat;
     position: absolute;
     right: 0;
+    z-index: 0;
 }
 
 .vector-leftImg {
-
-    background-color: rgba(255, 166, 0, 0.281);
     clip-path: path("M285.717 427.043C436.801 467.37 407.085 632.897 416 659H-0.653824C-31.1 437.62 -73.7246 -4.07649 -0.653824 0.175003C90.6847 5.48937 139.013 88.3309 135.416 145.851C131.818 203.371 134.634 386.717 285.717 427.043Z");
     background-image: url('./assets/images/rightImg1.jpg');
     width: 457px;
@@ -332,9 +344,13 @@ body {
     position: absolute;
     left: 0;
     bottom: 0;
-
+    z-index: 0;
 }
 
+.auth-content {
+    position: relative;
+    z-index: 2;
+}
 
 
 
