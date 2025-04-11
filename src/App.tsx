@@ -55,8 +55,6 @@ function App() {
     <>
 
 <RouterProvider router={routes} />
-
-    <RouterProvider router={routes} />
     {/* Toastify Container */}
 
     <ToastContainer
