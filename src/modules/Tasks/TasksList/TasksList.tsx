@@ -92,7 +92,7 @@ export default function TasksList() {
     if (role === 'Manager') {
       getTasks();
     }
-  }, [title, pageNumber, pageSize]);
+  }, [title, pageNumber, pageSize, role]);
 
   return (
     <>

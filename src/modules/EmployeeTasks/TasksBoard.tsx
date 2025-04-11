@@ -111,7 +111,8 @@ export default function TasksBoard() {
         getAllMyAssignedTasks() 
     }, [])
     if (isLoading) {
-        return <Loading />;
+  return <div className="min-vh-100  d-flex align-items-center justify-content-center">
+            <Loading /></div>;
     }
   return (
          <div>

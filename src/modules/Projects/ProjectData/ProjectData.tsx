@@ -61,14 +61,14 @@ export default function ProjectData() {
         <div className='mx-auto contentBg bg-white container w-75 rounded-3 shadow-lg py-3 px-3'>
           <Form className='filterGroup' onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>title</Form.Label>
+              <Form.Label className='textContent'>title</Form.Label>
               <Form.Control className='projecInput'{...register('title', REQUIRED_VALIDATION('title'))} type="text" placeholder="Name" />
               {errors?.title && <Form.Text className="text-danger">
                 {errors?.title?.message}
               </Form.Text>}
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Description</Form.Label>
+              <Form.Label className='textContent'>Description</Form.Label>
               <Form.Control className='projecInput' {...register('description', REQUIRED_VALIDATION('description'))} type="text" placeholder="Description" />
               {errors?.description && <Form.Text className="text-danger">
                 {errors?.title?.message}

@@ -5,6 +5,7 @@ import ProgressChart from '../shared/ProgressChart/ProgressChart';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Dashboard() {
+  
   const { role } = useAuth()
   console.log(role, 'sddsdsdsdsdss')
   return (

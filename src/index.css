@@ -54,7 +54,17 @@
     --dropdown-border-color: #cac5c5;
 
 }
-
+.modal {
+    --bs-modal-bg: #0e382f;
+}
+.deleteModal .btn:hover {
+    color: var(--textContent);
+    background-color: var(--contentBg);
+    border-color: var(--bs-btn-hover-border-color);
+}
+/* .hscreen{
+    height: 100vh;
+} */
 .dropdown-menu {
     /* Theme-aware color variables */
     --bs-dropdown-color: var(--textContent);
