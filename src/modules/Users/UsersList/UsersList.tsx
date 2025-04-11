@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Badge, Container, Dropdown, Form, Row, Table } from "react-bootstrap";
 import axios from "axios";
 import { privateAxiosInstance } from "../../services/api/apiInstance.ts";
@@ -10,6 +10,8 @@ import NoData from "../../shared/NoData/NoData.tsx";
 import Loading from "../../shared/Loading/Loading.tsx";
 import usePagination from "../../hooks/usePagination.ts";
 import Pagination from "../../shared/Pagination/Pagination.tsx";
+import { Authcontext } from "../../AuthContext/AuthContext.tsx";
+import ItemView from "../../shared/ItemView/ItemView.tsx";
 
 export default function UsersList() {
   const{pageNumber,setPageNumber, pageSize,totalPages,handleNext,handlePrev,handlePageSizeChange ,setTotalPages}=usePagination()
@@ -19,7 +21,12 @@ export default function UsersList() {
   const [country, setCountry] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [groups, setGroups] = useState<string>("");
+  const [itemToView, setItemToView] = useState<UserList>({} as UserList);
+  const [showItemViewModal, setShowItemViewModal] = useState<boolean>(false);
+  const authContext=useContext(Authcontext)
+  const role = authContext?.role
   const getUsers = async (): Promise<void> => {
+    setIsLoading(true);
     try {
       const response = await privateAxiosInstance.get<UserListResponse>(USER_URLS.GET_USERS, {
         params: {
@@ -203,10 +210,14 @@ export default function UsersList() {
                             );
                           }}
                         >
-                          {user?.isActivated ? 'activate' : 'deactivate'}
+                          {user?.isActivated ?  <i className="fa fa-lock me-2"></i> : <i className="fa fa-unlock me-2"></i>}
+                          {user?.isActivated ? 'deactivate' : 'activate'}
                         </Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">
-                          view
+                        <Dropdown.Item onClick={() => {
+                        setItemToView(user)
+                        setShowItemViewModal(true)
+                      }}>
+                          <i className="fa fa-eye me-2"></i>view
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
@@ -231,6 +242,12 @@ export default function UsersList() {
                           handleNext={handleNext}
                           handlePrev={handlePrev}
                         />
+        <ItemView 
+      itemType='user'
+        role={role}
+        item={itemToView}
+        show={showItemViewModal}
+        handleClose={() => { setShowItemViewModal(false) }} />
       </div>
     </>
   );
