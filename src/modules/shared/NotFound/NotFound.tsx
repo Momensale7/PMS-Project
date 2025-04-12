@@ -1,4 +1,3 @@
-import React from 'react'
 import logo404 from '../../../assets/404.png'
 import logo from './../../../assets/images/PMSlogo.png'
 import { useNavigate } from 'react-router-dom'

@@ -10,9 +10,6 @@ import NoData from "../../shared/NoData/NoData.tsx";
 import Loading from "../../shared/Loading/Loading.tsx";
 import usePagination from "../../hooks/usePagination.ts";
 import Pagination from "../../shared/Pagination/Pagination.tsx";
-
-import usePagination from "../../hooks/usePagination.ts";
-import Pagination from "../../shared/Pagination/Pagination.tsx";
 import { Authcontext } from "../../AuthContext/AuthContext.tsx";
 import ItemView from "../../shared/ItemView/ItemView.tsx";
 
@@ -62,7 +59,7 @@ export default function UsersList() {
     }
   };
 
-  const toggleUserStatus = async (id: string): Promise<void> => {
+  const toggleUserStatus = async (id:number | string): Promise<void> => {
     try {
       const response = await privateAxiosInstance.put<UserListResponse>(
         USER_URLS.TOGGLE_USER_STATUS(id)
@@ -195,7 +192,7 @@ export default function UsersList() {
                   <td>{user.email}</td>
                   <td>
                     {format(
-                      new Date(user.creationDate),
+                      new Date(user.creationDate || Date.now()),
                       "MMMM dd, yyyy hh:mm:ss a"
                     )}
                   </td>

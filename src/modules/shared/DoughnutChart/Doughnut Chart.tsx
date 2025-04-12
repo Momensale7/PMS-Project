@@ -34,7 +34,7 @@ hoverBackgroundColor: ["#8489D6", "#C3C36E", "#D67AA8"],
         text: "Task Status Overview",
         font: {
           size: 20,
-          weight: "bold",
+          weight: "bold" as const,
         },
       },
     },

@@ -1,6 +1,6 @@
 import React from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import {PaginationProps} from "../../Interfaces/Paginate";
+import PaginationProps from "../../Interfaces/Paginate";
 
 
 

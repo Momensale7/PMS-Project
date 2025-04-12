@@ -1,6 +1,5 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import React from 'react';
 import logo from '../../../assets/images/navLogo.png';
 import { DeleteConfirmationProps } from '../../Interfaces/project';
 import LogoLight from '../../../assets/images/PMSlogo.png'

@@ -1,4 +1,3 @@
-import React from 'react';
 import TaskStatistics from '../shared/TaskStatistics/TaskStatistics';
 import UserStatistics from '../shared/UserStatistics/UserStatistics';
 import ProgressChart from '../shared/ProgressChart/ProgressChart';

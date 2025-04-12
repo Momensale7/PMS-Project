@@ -7,8 +7,8 @@ import { COUNTRY_VALIDATION, EMAIL_VALIDATION, PASSWORD_VALIDATION, PHONE_VALIDA
 import regisertAvatar from '../../../assets/images/registerAvatar.png';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { RegisterFormInputs } from '../../interfaces/AuthInterfaces';
 import useTogglePassword from '../../hooks/useTogglePassword';
+import { RegisterFormInputs } from '../../Interfaces/AuthInterfaces';
 
 
 export default function Register(): JSX.Element {

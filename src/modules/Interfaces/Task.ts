@@ -19,7 +19,7 @@ export interface Task {
   project: Project;
   employee: Employee;
   description: string;
-  creationDate: string;
+  creationDate: Date;
 }
 
 export interface TaskResponse {
