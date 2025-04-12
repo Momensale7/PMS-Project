@@ -1,10 +1,7 @@
 import  { createContext,  useEffect, useState } from 'react'
 import { jwtDecode } from 'jwt-decode';
-import {
-    AuthContextProviderProps,
-    AuthContextType,
-    UserTokenPayload,
-  } from '../Interfaces/AuthInterfaces';
+import { AuthContextProviderProps, AuthContextType, UserTokenPayload } from '../Interfaces/authenticationInterfaces';
+
 
 export const Authcontext = createContext<AuthContextType | null>(null);
 export default function AuthContextProvider({ children }: AuthContextProviderProps) {

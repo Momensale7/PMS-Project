@@ -7,8 +7,8 @@ import logo from "../../../assets/images/PMSlogo.png";
 import { privateAxiosInstance } from '../../services/api/apiInstance';
 import { USER_URLS } from '../../services/api/apiConfig';
 import axios from 'axios';
-import { ChangePassProps, FormValues } from '../../Interfaces/AuthInterfaces';
 import useTogglePassword from '../../hooks/useTogglePassword';
+import { ChangePassProps, FormValues } from '../../Interfaces/authenticationInterfaces';
 
 
 export default function ChangePass({ onClose, show }: ChangePassProps) {
