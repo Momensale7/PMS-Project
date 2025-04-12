@@ -34,7 +34,7 @@ export default function Login() {
       );
       localStorage.setItem('token', response.data.token);
       saveLoginData();
-      toast.success('welcome');
+      toast.success('Logged in successfully');
       navigate('/dashboard');
     } catch (error) {
         if (error instanceof AxiosError ) {
