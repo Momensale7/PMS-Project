@@ -19,3 +19,21 @@ export interface TaskResponse {
   totalPages: number;
   totalNumberOfRecords: number;
 }
+
+
+export interface TaskFormData {
+  title: string;
+  description: string;
+  employeeId: string;
+  projectId: string;
+}
+
+export interface employeeId {
+  id: string;
+  name: string;
+}
+
+export interface projectId {
+  id: string;
+  name: string;
+}
