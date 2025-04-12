@@ -28,12 +28,12 @@ export interface DecodedToken {
     exp?: number;
 }
 export interface UserList {
-    id: string;
+    id: string | number;
     userName: string;
-    isActivated: boolean;
+    isActivated?: boolean;
     email: string;
-    phoneNumber: string;
-    creationDate: string;
+    phoneNumber?: string;
+    creationDate?: string;
 }
 export interface UserListResponse {
    data: UserList[];

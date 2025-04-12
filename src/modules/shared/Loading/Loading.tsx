@@ -2,14 +2,10 @@ import React from 'react'
 
 export default function Loading() {
   return (
-    <div
-      className="spinner-border text-success"
-      role="status"
-    >
-      <span className="visually-hidden">
-        Loading...
-      </span>
-    </div>
+    <section className="container">
+  <div className="square"></div>
+  <div className="infinite-scroll"></div>
+</section>
 
   )
 }

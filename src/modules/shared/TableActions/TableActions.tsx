@@ -29,8 +29,8 @@ export default function TableActions({
             </Dropdown.Item>
             <Dropdown.Item className="textContent">
               <Link
-                to={`/dashboard/projects/${itemID}`}
-                className="text-decoration-none textContent"
+              to={itemName ? `/dashboard/projects/${itemID}` : `/dashboard/tasks/${itemID}`}
+              className="text-decoration-none textContent"
               >
                 <i className="fa fa-edit mx-2"></i>Edit
               </Link>
