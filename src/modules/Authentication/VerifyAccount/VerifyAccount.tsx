@@ -6,7 +6,7 @@ import { USER_URLS } from '../../services/api/apiConfig';
 import { EMAIL_VALIDATION } from '../../services/validation/validation';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { LocationState, VerifyFormInputs } from '../../Interfaces/AuthInterfaces';
+import { LocationState, VerifyFormInputs } from '../../Interfaces/authenticationInterfaces';
 
 
 export default function VerifyAccount():JSX.Element {

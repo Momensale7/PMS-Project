@@ -8,7 +8,7 @@ import regisertAvatar from '../../../assets/images/registerAvatar.png';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import useTogglePassword from '../../hooks/useTogglePassword';
-import { RegisterFormInputs } from '../../Interfaces/AuthInterfaces';
+import { RegisterFormInputs } from '../../Interfaces/authenticationInterfaces';
 
 
 export default function Register(): JSX.Element {
