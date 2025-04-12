@@ -8,6 +8,8 @@ import { format } from "date-fns";
 import { toast } from "react-toastify";
 import NoData from "../../shared/NoData/NoData.tsx";
 import Loading from "../../shared/Loading/Loading.tsx";
+import usePagination from "../../hooks/usePagination.ts";
+import Pagination from "../../shared/Pagination/Pagination.tsx";
 
 import usePagination from "../../hooks/usePagination.ts";
 import Pagination from "../../shared/Pagination/Pagination.tsx";
@@ -247,12 +249,15 @@ export default function UsersList() {
                           handleNext={handleNext}
                           handlePrev={handlePrev}
                         />
+
         <ItemView 
       itemType='user'
         role={role}
         item={itemToView}
         show={showItemViewModal}
         handleClose={() => { setShowItemViewModal(false) }} />
+
+
       </div>
     </>
   );
