@@ -10,9 +10,6 @@ import NoData from "../../shared/NoData/NoData.tsx";
 import Loading from "../../shared/Loading/Loading.tsx";
 import usePagination from "../../hooks/usePagination.ts";
 import Pagination from "../../shared/Pagination/Pagination.tsx";
-
-import usePagination from "../../hooks/usePagination.ts";
-import Pagination from "../../shared/Pagination/Pagination.tsx";
 import { Authcontext } from "../../AuthContext/AuthContext.tsx";
 import ItemView from "../../shared/ItemView/ItemView.tsx";
 

@@ -1,4 +1,5 @@
-import {pattern} from '../../Interfaces/AuthInterfaces'
+import { pattern } from "../../Interfaces/AuthInterfaces";
+
 export const EMAIL_VALIDATION :{required:string,pattern:pattern} = {
     required: 'email is required',
     pattern: {
