@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
-import { Form, Button, Container, Row, Col, Card, Spinner, Badge } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Card, Badge } from 'react-bootstrap';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Project, ProjectResponse } from '../../Interfaces/project';
@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { privateAxiosInstance } from '../../services/api/apiInstance';
 import { PROJECT_URLS, TASKS_URLS, USER_URLS } from '../../services/api/apiConfig';
 import { UserList, UserListResponse } from '../../Interfaces/User';
+import Loading from '../../shared/Loading/Loading';
 
 const TaskData: React.FC = () => {
   const { control, handleSubmit, formState: { errors }, setValue, reset, watch } = useForm<TaskFormData>();
@@ -231,7 +232,7 @@ const TaskData: React.FC = () => {
   if (isLoading) {
     return (
       <div className="d-flex justify-content-center align-items-center min-vh-100">
-        <Spinner animation="border" variant="warning" />
+        <Loading/>
       </div>
     );
   }
