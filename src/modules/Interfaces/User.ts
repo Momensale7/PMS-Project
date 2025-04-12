@@ -33,7 +33,7 @@ export interface UserList {
     isActivated?: boolean;
     email: string;
     phoneNumber?: string;
-    creationDate?: string;
+    creationDate?: Date;
 }
 export interface UserListResponse {
    data: UserList[];

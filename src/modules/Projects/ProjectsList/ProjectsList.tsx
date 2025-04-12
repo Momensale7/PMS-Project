@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useContext, useEffect, useState } from 'react'
-import { Dropdown, Form, Table } from 'react-bootstrap'
+import  { useContext, useEffect, useState } from 'react'
+import {Form, Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Project, ProjectResponse } from '../../Interfaces/project';
 import { privateAxiosInstance } from '../../services/api/apiInstance';

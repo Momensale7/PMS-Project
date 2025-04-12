@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ProjectInputs, ProjectUpdate } from '../../Interfaces/project';
 import { Button, Form } from 'react-bootstrap';

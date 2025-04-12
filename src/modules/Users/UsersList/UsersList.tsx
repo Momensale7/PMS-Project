@@ -59,7 +59,7 @@ export default function UsersList() {
     }
   };
 
-  const toggleUserStatus = async (id: string): Promise<void> => {
+  const toggleUserStatus = async (id:number | string): Promise<void> => {
     try {
       const response = await privateAxiosInstance.put<UserListResponse>(
         USER_URLS.TOGGLE_USER_STATUS(id)
@@ -192,7 +192,7 @@ export default function UsersList() {
                   <td>{user.email}</td>
                   <td>
                     {format(
-                      new Date(user.creationDate),
+                      new Date(user.creationDate || Date.now()),
                       "MMMM dd, yyyy hh:mm:ss a"
                     )}
                   </td>

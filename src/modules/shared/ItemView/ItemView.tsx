@@ -15,11 +15,18 @@ export default function ItemView({ handleClose, show, item, role, itemType }: It
   }
  };
 
- const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleString('en-GB', {
-   day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true
-  });
- };
+const formatDate = (date?: Date) => {
+  return date
+    ? new Date(date).toLocaleString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+      })
+    : 'Not available';
+};
 
  return (
   <Modal show={show} onHide={handleClose} className='itemViewModal align-items-center border-0 justify-content-center d-flex modal-lg'>

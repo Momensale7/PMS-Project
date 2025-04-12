@@ -5,8 +5,8 @@ export interface Project {
     id: number;
     title: string;
     description: string;
-    creationDate: string;
-    modificationDate: string;
+    creationDate: Date;
+    modificationDate: Date;
     task:task[];
   }
   export interface ProjectUpdate {

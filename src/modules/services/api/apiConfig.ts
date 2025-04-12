@@ -11,7 +11,7 @@ export const USER_URLS={
     GET_USERS:`/Users`,
     GET_USERS_COUNT:`/Users/count`,
     VERIFY:`/Users/Verify`,
-    TOGGLE_USER_STATUS: (id: string) => `/Users/${id}`,
+    TOGGLE_USER_STATUS: (id: string | number) => `/Users/${id}`,
     GET_USER_BY_ID:(id:string|number)=>`/Users/${id}`,
 }
 

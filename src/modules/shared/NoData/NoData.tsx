@@ -1,4 +1,3 @@
-import React from 'react'
 import noDataImg from '../../../assets/nodata.png'
 const NoData = () => {
   return (

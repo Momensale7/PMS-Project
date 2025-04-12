@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import DoughnutChart from '../DoughnutChart/Doughnut Chart';
 import { privateAxiosInstance } from '../../services/api/apiInstance';
 

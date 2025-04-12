@@ -16,9 +16,8 @@ import {
     useSensors,
     DragEndEvent,
     DragStartEvent,
-    DragOverEvent
   } from '@dnd-kit/core';
-import { arrayMove,sortableKeyboardCoordinates } from "@dnd-kit/sortable"
+import { sortableKeyboardCoordinates } from "@dnd-kit/sortable"
 import TaskItem from "./TaskItem"
 import Loading from "../shared/Loading/Loading"
 
@@ -26,8 +25,8 @@ import Loading from "../shared/Loading/Loading"
 export default function TasksBoard() {
     const [tasks, setTasks] = useState<Task[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [pageNumber, setPageNumber] = useState<number>(1)
-    const [pageSize,setPageSize] = useState<number>(10)
+    const [pageNumber] = useState<number>(1)
+    const [pageSize] = useState<number>(15)
     const [activeId, setActiveId] = useState<number | null>(null);
     const activeTask = activeId ? tasks.find(t => t.id === activeId) : null;
     const sensors = useSensors(

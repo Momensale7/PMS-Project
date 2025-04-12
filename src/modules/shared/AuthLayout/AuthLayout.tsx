@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import logo from '../../../assets/images/PMSlogo.png'
