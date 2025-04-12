@@ -111,11 +111,12 @@ export default function TasksBoard() {
         getAllMyAssignedTasks() 
     }, [])
     if (isLoading) {
-        return <Loading />;
+  return <div className="min-vh-100  d-flex align-items-center justify-content-center">
+            <Loading /></div>;
     }
   return (
          <div>
-          <div className="dark-text  py-3 px-4 mb-3">
+          <div className="dark-text contentBg  py-3 px-4 mb-3">
           <h3 className='h3 dark-text fw-medium'>Task Board</h3>
         </div>
         <div className="container">
